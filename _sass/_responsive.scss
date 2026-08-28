@@ -125,6 +125,22 @@
   .direction-visual--route .direction-visual__canvas {
     height: min(72vw, 26rem);
   }
+
+  .application-field {
+    min-height: 44rem;
+  }
+
+  .application-field__node {
+    width: min(13rem, 27vw);
+  }
+
+  .route-list__item {
+    grid-template-columns: 3rem 1fr;
+  }
+
+  .route-list__item p {
+    grid-column: 2;
+  }
 }
 
 @media (max-width: 520px) {
@@ -161,5 +177,48 @@
   .research-grid,
   .route-grid--research {
     grid-template-columns: 1fr;
+  }
+
+  .application-field {
+    display: grid;
+    min-height: auto;
+    padding-top: 16rem;
+  }
+
+  .application-field__map {
+    height: 16rem;
+  }
+
+  .application-field__core-label {
+    top: 8rem;
+  }
+
+  .application-field__nodes {
+    display: grid;
+    padding: 0.5rem 0 1.5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .application-field__node,
+  .application-field__node--1,
+  .application-field__node--2,
+  .application-field__node--3,
+  .application-field__node--4,
+  .application-field__node--5,
+  .application-field__node--6 {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 3.8rem;
+    background: transparent;
+  }
+
+  .application-field__node small {
+    opacity: 1;
+    transform: none;
+  }
+
+  .route-list__item {
+    grid-template-columns: 2.2rem 1fr;
   }
 }

@@ -57,8 +57,7 @@ function renderHypercube(visual) {
     append(structure, 'circle', { cx, cy, r: index < 8 ? 4.5 : 3.5, class: 'motif__node-core', style: `--i:${index}` });
   });
   append(flow, 'path', { d: 'M96 245Q215 290 342 228T411 92', class: 'motif__orbit' });
-  const traveller = append(flow, 'circle', { r: 5, class: 'motif__traveller' });
-  append(traveller, 'animateMotion', { dur: '9s', repeatCount: 'indefinite', path: 'M96 245Q215 290 342 228T411 92' });
+  append(flow, 'circle', { cx: 333, cy: 231, r: 5, class: 'motif__traveller' });
 }
 
 function renderTensor(visual) {

@@ -254,3 +254,181 @@
 .route-grid--research .direction-visual:nth-child(n + 4) {
   grid-column: span 1;
 }
+
+.application-field {
+  position: relative;
+  min-height: clamp(34rem, 48vw, 48rem);
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  isolation: isolate;
+}
+
+.application-field::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: min(48vw, 42rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(39, 121, 127, 0.14), transparent 64%);
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+.application-field__map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.application-field__orbits {
+  fill: none;
+  stroke: url(#application-flow);
+  stroke-width: 1;
+  stroke-dasharray: 4 10;
+  opacity: 0.3;
+}
+
+.application-field__orbits path {
+  stroke-width: 1.4;
+  stroke-dasharray: 2 22;
+}
+
+.application-field__core {
+  fill: rgba(5, 8, 17, 0.82);
+  stroke: rgba(116, 230, 178, 0.45);
+  stroke-width: 1;
+}
+
+.application-field__core-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10rem;
+  margin: 0;
+  color: var(--text-soft);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-align: center;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+}
+
+.application-field__node {
+  --app-color: var(--green);
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  width: clamp(10rem, 14vw, 14rem);
+  min-height: 4.6rem;
+  align-content: center;
+  padding: 0.7rem 0.9rem 0.7rem 1.25rem;
+  border-left: 1px solid color-mix(in srgb, var(--app-color) 54%, transparent);
+  color: var(--text);
+  background: linear-gradient(90deg, rgba(9, 16, 29, 0.88), rgba(9, 16, 29, 0));
+  text-decoration: none;
+  transition: border-color 220ms ease, transform 220ms var(--ease), background 220ms ease;
+}
+
+.application-field__node::before {
+  position: absolute;
+  top: 50%;
+  left: -0.26rem;
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: var(--app-color);
+  content: "";
+  box-shadow: 0 0 0.8rem color-mix(in srgb, var(--app-color) 34%, transparent);
+  transform: translateY(-50%);
+}
+
+.application-field__node span {
+  font-family: var(--serif);
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+}
+
+.application-field__node small {
+  color: var(--text-faint);
+  font-size: 0.62rem;
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(0.25rem);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.application-field__node:hover,
+.application-field__node:focus-visible,
+.application-field__node.is-active {
+  background: linear-gradient(90deg, rgba(13, 23, 39, 0.98), rgba(13, 23, 39, 0.16));
+  transform: translateX(0.4rem);
+}
+
+.application-field__node:hover small,
+.application-field__node:focus-visible small,
+.application-field__node.is-active small {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.application-field__node--1 { top: 17%; left: 4%; --app-color: var(--cyan); }
+.application-field__node--2 { bottom: 18%; left: 8%; --app-color: var(--violet); }
+.application-field__node--3 { top: 3%; left: 34%; --app-color: var(--gold); }
+.application-field__node--4 { top: 4%; right: 27%; --app-color: var(--green); }
+.application-field__node--5 { top: 22%; right: 3%; --app-color: var(--violet); }
+.application-field__node--6 { right: 8%; bottom: 16%; --app-color: var(--gold); }
+
+.application-field__node--2,
+.application-field__node--6 {
+  background: linear-gradient(90deg, rgba(9, 16, 29, 0.88), rgba(9, 16, 29, 0.08));
+}
+
+.application-field__orbits ellipse,
+.application-field__orbits path {
+  animation: application-current 18s linear infinite;
+}
+
+.application-field__orbits ellipse:nth-child(2),
+.application-field__orbits path:nth-child(4) {
+  animation-direction: reverse;
+  animation-duration: 24s;
+}
+
+.route-list {
+  border-top: 1px solid var(--line);
+}
+
+.route-list__item {
+  display: grid;
+  padding: 1.5rem 0;
+  grid-template-columns: 5rem minmax(14rem, 1fr) minmax(16rem, 0.7fr);
+  align-items: baseline;
+  gap: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.route-list__item > span {
+  color: var(--text-faint);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+}
+
+.route-list__item h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 3.2rem);
+}
+
+.route-list__item p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+
+@keyframes application-current {
+  to { stroke-dashoffset: -160; }
+}

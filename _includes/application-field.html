@@ -18,7 +18,7 @@
   <p class="application-field__core-label">Shared mathematical structure</p>
   <div class="application-field__nodes">
     {% for item in site.data.applications %}
-      <a class="application-field__node application-field__node--{{ forloop.index }}" href="{{ item.link | relative_url }}">
+      <a class="application-field__node application-field__node--{{ forloop.index }}" href="{{ item.link | relative_url }}" data-application-node data-application-index="{{ forloop.index0 }}">
         <span>{{ item.title }}</span>
         <small>{{ item.description }}</small>
       </a>
