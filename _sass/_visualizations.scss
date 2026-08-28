@@ -2,3 +2,133 @@
   position: relative;
   overflow: hidden;
 }
+
+.motif {
+  width: 100%;
+  height: 100%;
+  color: var(--cyan);
+}
+
+.motif__grid {
+  fill: none;
+  stroke: rgba(151, 205, 231, 0.055);
+  stroke-width: 0.65;
+}
+
+.motif__structure,
+.motif__flow {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.motif__edge,
+.motif__dimension-edge,
+.motif__operator-arrow {
+  fill: none;
+  stroke: rgba(151, 218, 244, 0.35);
+  stroke-width: 1.1;
+}
+
+.motif__edge--faint,
+.motif__dimension-edge {
+  stroke-opacity: 0.42;
+  stroke-dasharray: 3 5;
+}
+
+.motif__arrowhead {
+  fill: var(--cyan);
+  opacity: 0.55;
+}
+
+.motif__node-shell {
+  fill: rgba(5, 8, 17, 0.88);
+  stroke: rgba(113, 225, 255, 0.42);
+  stroke-width: 1;
+}
+
+.motif__node-core {
+  fill: var(--cyan);
+  filter: drop-shadow(0 0 5px rgba(113, 225, 255, 0.35));
+}
+
+.motif__symbol {
+  fill: rgba(217, 231, 239, 0.52);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+.motif__current,
+.motif__orbit,
+.motif__mode {
+  fill: none;
+  stroke: var(--cyan);
+  stroke-linecap: round;
+}
+
+.motif__current {
+  stroke-width: 2;
+  stroke-dasharray: 1 19;
+  opacity: 0;
+}
+
+.is-visible .motif__current {
+  opacity: 0.75;
+  animation: current-flow 5.5s linear infinite;
+  animation-delay: calc(var(--i) * -0.34s);
+}
+
+.motif__orbit {
+  stroke-width: 1;
+  stroke-dasharray: 3 8;
+  opacity: 0.32;
+}
+
+.motif__traveller {
+  fill: var(--violet);
+  filter: drop-shadow(0 0 5px rgba(168, 151, 255, 0.45));
+}
+
+.motif__tensor-node {
+  fill: rgba(168, 151, 255, 0.12);
+  stroke: rgba(168, 151, 255, 0.75);
+}
+
+.motif__operator {
+  fill: rgba(113, 225, 255, 0.15);
+  stroke: rgba(113, 225, 255, 0.56);
+}
+
+.motif__mode {
+  stroke-width: 1.3;
+  stroke-dasharray: 90 60;
+  opacity: 0.34;
+}
+
+.is-visible .motif__mode {
+  animation: spectral-mode 8s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * -1.2s);
+}
+
+.is-visible .motif--hypercube .motif__structure {
+  animation: configuration-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes current-flow {
+  to { stroke-dashoffset: -80; }
+}
+
+@keyframes spectral-mode {
+  0% { stroke-dashoffset: 0; opacity: 0.25; }
+  100% { stroke-dashoffset: -55; opacity: 0.72; }
+}
+
+@keyframes configuration-drift {
+  from { transform: rotate(-1.3deg) scale(0.985); }
+  to { transform: rotate(1.3deg) scale(1.015); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motif__current {
+    opacity: 0.55;
+  }
+}
