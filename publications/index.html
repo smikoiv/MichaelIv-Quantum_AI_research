@@ -9,7 +9,8 @@ summary: A verified publication record will appear here.
     {% for publication in site.data.publications %}
       <li>
         <article>
-          <p>{{ publication.year }}</p>
+          {% if publication.graphical_abstract %}<img src="{{ publication.graphical_abstract | relative_url }}" alt="Graphical abstract for {{ publication.title }}">{% endif %}
+          <p>{% if publication.topic_tag %}<span>{{ publication.topic_tag }}</span> · {% endif %}{{ publication.year }}</p>
           <h2>{{ publication.title }}</h2>
           <p>{{ publication.authors }}</p>
           <p>{{ publication.journal }}</p>
