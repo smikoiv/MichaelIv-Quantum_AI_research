@@ -1,0 +1,13 @@
+---
+title: Theory
+permalink: /theory/
+eyebrow: Mathematical directions
+summary: Three equal approaches to structure, dynamics, and representation.
+wide: true
+visualizations: true
+---
+<div class="route-grid route-grid--three">
+  {% for item in site.data.theory %}
+    {% include direction-visual.html item=item index=forloop.index scale="route" %}
+  {% endfor %}
+</div>

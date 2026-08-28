@@ -1,0 +1,27 @@
+---
+title: Publications
+permalink: /publications/
+eyebrow: Record
+summary: A verified publication record will appear here.
+---
+{% if site.data.publications.size > 0 %}
+  <ol class="publication-list">
+    {% for publication in site.data.publications %}
+      <li>
+        <article>
+          <p>{{ publication.year }}</p>
+          <h2>{{ publication.title }}</h2>
+          <p>{{ publication.authors }}</p>
+          <p>{{ publication.journal }}</p>
+          {% if publication.doi %}<a href="https://doi.org/{{ publication.doi }}">DOI</a>{% endif %}
+          {% if publication.external_link %}<a href="{{ publication.external_link }}">External record</a>{% endif %}
+        </article>
+      </li>
+    {% endfor %}
+  </ol>
+{% else %}
+  <div class="empty-state">
+    <p class="eyebrow">Awaiting verified data</p>
+    <p>No publication entries are displayed.</p>
+  </div>
+{% endif %}

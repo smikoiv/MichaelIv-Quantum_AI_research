@@ -1,0 +1,15 @@
+orcid:
+  label: ORCID
+  url: https://orcid.org/0000-0002-3447-359X
+github:
+  label: GitHub
+  url: https://github.com/smikoiv
+email:
+  label: Email
+  url: mailto:smikoiv@gmail.com
+linkedin:
+  label: LinkedIn
+  url: ""
+google_scholar:
+  label: Google Scholar
+  url: ""

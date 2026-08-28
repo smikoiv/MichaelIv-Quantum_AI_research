@@ -1,0 +1,38 @@
+---
+title: CV
+permalink: /cv/
+eyebrow: Curriculum vitae
+summary: A structured framework for a verified professional record.
+body_class: cv-page
+---
+{% if site.data.cv.download_url != empty %}
+  <a class="cv-download" href="{{ site.data.cv.download_url | relative_url }}">Download PDF CV</a>
+{% endif %}
+
+{% if site.data.cv.sections.size > 0 %}
+  <div class="cv-sections">
+    {% for section in site.data.cv.sections %}
+      <section>
+        <h2>{{ section.title }}</h2>
+        {% for entry in section.entries %}
+          <article>
+            <h3>{{ entry.title }}</h3>
+            {% if entry.subtitle %}<p>{{ entry.subtitle }}</p>{% endif %}
+            {% if entry.date %}<time>{{ entry.date }}</time>{% endif %}
+          </article>
+        {% endfor %}
+      </section>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="cv-framework" aria-label="CV framework awaiting verified information">
+    <div><span>01</span><p>Research profile</p></div>
+    <div><span>02</span><p>Experience</p></div>
+    <div><span>03</span><p>Education</p></div>
+    <div><span>04</span><p>Selected record</p></div>
+  </div>
+  <div class="empty-state">
+    <p class="eyebrow">Awaiting verified data</p>
+    <p>No biographical entries are displayed.</p>
+  </div>
+{% endif %}

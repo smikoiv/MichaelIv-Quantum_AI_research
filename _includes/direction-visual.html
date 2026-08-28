@@ -1,0 +1,12 @@
+{% assign item = include.item %}
+<article class="direction-visual direction-visual--{{ include.scale | default: 'standard' }}" id="{{ item.title | slugify }}" data-visual="{{ item.visual_type }}">
+  <a class="direction-visual__link" href="{{ item.link | relative_url }}" aria-label="Explore {{ item.title }}"></a>
+  <div class="direction-visual__canvas scientific-visual" aria-hidden="true" data-scientific-visual="{{ item.visual_type }}">
+    {% include scientific-svg.html type=item.visual_type %}
+  </div>
+  <div class="direction-visual__meta">
+    <p class="direction-visual__index">{{ include.index }}</p>
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.description }}</p>
+  </div>
+</article>

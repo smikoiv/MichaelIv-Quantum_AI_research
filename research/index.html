@@ -1,0 +1,13 @@
+---
+title: Research
+permalink: /research/
+eyebrow: Research directions
+summary: Dynamics, transport, computation, and algorithms across structured state spaces.
+wide: true
+visualizations: true
+---
+<div class="route-grid route-grid--research">
+  {% for item in site.data.research %}
+    {% include direction-visual.html item=item index=forloop.index scale="route" %}
+  {% endfor %}
+</div>

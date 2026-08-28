@@ -1,0 +1,19 @@
+---
+title: Applications
+permalink: /applications/
+eyebrow: Application directions
+summary: Six domains emerging from a shared mathematical framework.
+wide: true
+visualizations: true
+---
+{% include application-field.html %}
+
+<div class="route-list">
+  {% for item in site.data.applications %}
+    <section class="route-list__item" id="{{ item.title | slugify }}">
+      <span>{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+      <h2>{{ item.title }}</h2>
+      <p>{{ item.description }}</p>
+    </section>
+  {% endfor %}
+</div>

@@ -1,0 +1,47 @@
+---
+layout: default
+title: Home
+description: Mathematical structure in complex dynamical systems — theory, research, and applications.
+body_class: home
+sphere: true
+visualizations: true
+---
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__identity">
+    <p class="eyebrow">Mathematical research</p>
+    <h1 id="hero-title">Michael <span>“Miko”</span> Iv</h1>
+    <p class="hero__subtitle">Mathematical Structure in Complex Dynamical Systems</p>
+    {% include social-links.html compact=true %}
+  </div>
+  {% include research-sphere.html %}
+  <a class="hero__continue" href="#theory-home"><span>Trace the structure</span><i aria-hidden="true"></i></a>
+</section>
+
+<section class="home-section home-section--theory" id="theory-home" aria-labelledby="theory-title">
+  {% include section-heading.html index="01 / Structure" id="theory-title" title="Theory" note="Three equal mathematical directions." link="/theory/" %}
+  <div class="theory-grid">
+    {% for item in site.data.theory %}
+      {% include direction-visual.html item=item index=forloop.index scale="large" %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="home-section home-section--research" id="research-home" aria-labelledby="research-title">
+  {% include section-heading.html index="02 / Dynamics" id="research-title" title="Research" note="Five connected modes of inquiry." link="/research/" %}
+  <div class="research-grid">
+    {% for item in site.data.research %}
+      {% include direction-visual.html item=item index=forloop.index scale="compact" %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="home-section home-section--applications" id="applications-home" aria-labelledby="applications-title">
+  {% include section-heading.html index="03 / Flow" id="applications-title" title="Applications" note="One framework, six equal directions." link="/applications/" %}
+  {% include application-field.html %}
+</section>
+
+<nav class="home-destinations" aria-label="Further information">
+  <a href="{{ '/publications/' | relative_url }}"><span>Publications</span><i aria-hidden="true">↗</i></a>
+  <a href="{{ '/cv/' | relative_url }}"><span>CV</span><i aria-hidden="true">↗</i></a>
+  <a href="{{ '/contact/' | relative_url }}"><span>Contact</span><i aria-hidden="true">↗</i></a>
+</nav>

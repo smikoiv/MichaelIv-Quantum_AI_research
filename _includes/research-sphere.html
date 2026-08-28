@@ -1,0 +1,50 @@
+<section class="research-sphere" aria-labelledby="sphere-title" data-research-sphere>
+  <div class="sphere-copy">
+    <p class="eyebrow">Research landscape</p>
+    <h2 id="sphere-title" class="visually-hidden">Interactive research landscape</h2>
+    <p class="sphere-status" id="sphere-description" aria-live="polite">Choose a direction to trace its position through the research landscape.</p>
+  </div>
+  <div class="sphere-stage" data-sphere-stage>
+    <div class="sphere-canvas" data-sphere-canvas aria-hidden="true"></div>
+    <svg class="sphere-static" viewBox="0 0 640 640" aria-hidden="true">
+      <defs>
+        <radialGradient id="sphere-depth" cx="42%" cy="34%" r="66%">
+          <stop offset="0" stop-color="#71e1ff" stop-opacity=".11"></stop>
+          <stop offset="1" stop-color="#71e1ff" stop-opacity="0"></stop>
+        </radialGradient>
+      </defs>
+      <circle cx="320" cy="320" r="220" fill="url(#sphere-depth)" stroke="currentColor"></circle>
+      <ellipse cx="320" cy="320" rx="220" ry="74"></ellipse>
+      <ellipse cx="320" cy="320" rx="220" ry="142"></ellipse>
+      <ellipse cx="320" cy="320" rx="74" ry="220"></ellipse>
+      <ellipse cx="320" cy="320" rx="142" ry="220"></ellipse>
+      <path d="M78 320H562M320 78V562"></path>
+      <ellipse class="sphere-static__orbit sphere-static__orbit--a" cx="320" cy="320" rx="260" ry="104" transform="rotate(-24 320 320)"></ellipse>
+      <ellipse class="sphere-static__orbit sphere-static__orbit--b" cx="320" cy="320" rx="270" ry="124" transform="rotate(42 320 320)"></ellipse>
+    </svg>
+    <div class="sphere-labels" aria-describedby="sphere-description" data-sphere-labels>
+      {% assign sphere_index = 0 %}
+      {% for item in site.data.theory %}
+        <a href="{{ item.link | relative_url }}" class="sphere-node sphere-node--theory" data-sphere-node data-group="theory" data-index="{{ sphere_index }}" data-x="{{ item.sphere_coordinates.x }}" data-y="{{ item.sphere_coordinates.y }}" data-z="{{ item.sphere_coordinates.z }}" data-description="{{ item.description | escape }}"><span>{{ item.short_label }}</span></a>
+        {% assign sphere_index = sphere_index | plus: 1 %}
+      {% endfor %}
+      {% for item in site.data.research %}
+        <a href="{{ item.link | relative_url }}" class="sphere-node sphere-node--research" data-sphere-node data-group="research" data-index="{{ sphere_index }}" data-x="{{ item.sphere_coordinates.x }}" data-y="{{ item.sphere_coordinates.y }}" data-z="{{ item.sphere_coordinates.z }}" data-description="{{ item.description | escape }}"><span>{{ item.short_label }}</span></a>
+        {% assign sphere_index = sphere_index | plus: 1 %}
+      {% endfor %}
+      {% for item in site.data.applications %}
+        <a href="{{ item.link | relative_url }}" class="sphere-node sphere-node--applications" data-sphere-node data-group="applications" data-index="{{ sphere_index }}" data-x="{{ item.sphere_coordinates.x }}" data-y="{{ item.sphere_coordinates.y }}" data-z="{{ item.sphere_coordinates.z }}" data-description="{{ item.description | escape }}"><span>{{ item.short_label }}</span></a>
+        {% assign sphere_index = sphere_index | plus: 1 %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="sphere-legend" aria-label="Research landscape groups">
+    <span class="sphere-legend__item sphere-legend__item--theory">Theory</span>
+    <span class="sphere-legend__item sphere-legend__item--research">Research</span>
+    <span class="sphere-legend__item sphere-legend__item--applications">Applications</span>
+    <span class="sphere-legend__note">Position indicates direction, never rank.</span>
+  </div>
+  <script type="application/json" data-sphere-data>
+    {"groups":[{"key":"theory","items":{{ site.data.theory | jsonify }}},{"key":"research","items":{{ site.data.research | jsonify }}},{"key":"applications","items":{{ site.data.applications | jsonify }}}]}
+  </script>
+</section>

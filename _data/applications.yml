@@ -1,0 +1,60 @@
+- title: Environment
+  short_label: Environment
+  description: Spatial fields and environmental networks.
+  icon: flow-field
+  visual_type: environment
+  sphere_coordinates:
+    x: -0.78
+    y: -0.56
+    z: 0.28
+  link: /applications/#environment
+- title: Transport
+  short_label: Transport
+  description: Paths moving through connected systems.
+  icon: transport-path
+  visual_type: transport
+  sphere_coordinates:
+    x: -0.38
+    y: -0.82
+    z: -0.44
+  link: /applications/#transport
+- title: Energy
+  short_label: Energy
+  description: Dynamic flow across coupled grids.
+  icon: energy-grid
+  visual_type: energy
+  sphere_coordinates:
+    x: 0.06
+    y: -0.95
+    z: 0.3
+  link: /applications/#energy
+- title: Biology & Health
+  short_label: Biology + Health
+  description: Branching structure and state transitions.
+  icon: branching
+  visual_type: biology
+  sphere_coordinates:
+    x: 0.46
+    y: -0.78
+    z: -0.42
+  link: /applications/#biology-health
+- title: Economics & Finance
+  short_label: Economics + Finance
+  description: Stochastic flow through dynamic networks.
+  icon: economic-network
+  visual_type: economics
+  sphere_coordinates:
+    x: 0.75
+    y: -0.56
+    z: 0.36
+  link: /applications/#economics-finance
+- title: Infrastructure
+  short_label: Infrastructure
+  description: Capacity-constrained interconnected networks.
+  icon: infrastructure
+  visual_type: infrastructure
+  sphere_coordinates:
+    x: 0.92
+    y: -0.32
+    z: -0.24
+  link: /applications/#infrastructure

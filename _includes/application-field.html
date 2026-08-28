@@ -1,0 +1,27 @@
+<div class="application-field" data-application-field>
+  <svg class="application-field__map" viewBox="0 0 1200 600" role="presentation" aria-hidden="true">
+    <defs>
+      <linearGradient id="application-flow" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#71e1ff"></stop>
+        <stop offset=".5" stop-color="#74e6b2"></stop>
+        <stop offset="1" stop-color="#e7c878"></stop>
+      </linearGradient>
+    </defs>
+    <g class="application-field__orbits">
+      <ellipse cx="600" cy="300" rx="500" ry="205"></ellipse>
+      <ellipse cx="600" cy="300" rx="430" ry="260" transform="rotate(-12 600 300)"></ellipse>
+      <path d="M96 376C270 84 488 78 614 300s314 235 492-64"></path>
+      <path d="M98 225c160 215 322 220 500 52s330-154 504 54"></path>
+    </g>
+    <circle class="application-field__core" cx="600" cy="300" r="58"></circle>
+  </svg>
+  <p class="application-field__core-label">Shared mathematical structure</p>
+  <div class="application-field__nodes">
+    {% for item in site.data.applications %}
+      <a class="application-field__node application-field__node--{{ forloop.index }}" href="{{ item.link | relative_url }}">
+        <span>{{ item.title }}</span>
+        <small>{{ item.description }}</small>
+      </a>
+    {% endfor %}
+  </div>
+</div>

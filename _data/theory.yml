@@ -1,0 +1,30 @@
+- title: Foundations
+  short_label: Foundations
+  description: Transitions, generators, probability currents.
+  icon: transition-graph
+  visual_type: markov
+  sphere_coordinates:
+    x: -0.72
+    y: 0.62
+    z: 0.3
+  link: /theory/#foundations
+- title: State-Space Geometry
+  short_label: State-Space
+  description: Configurations, topology, symmetry sectors.
+  icon: hypercube
+  visual_type: hypercube
+  sphere_coordinates:
+    x: 0.12
+    y: 0.88
+    z: -0.42
+  link: /theory/#state-space-geometry
+- title: Spectral & Tensor Methods
+  short_label: Spectral + Tensor
+  description: Sparse operators, modes, reduced structure.
+  icon: tensor
+  visual_type: tensor
+  sphere_coordinates:
+    x: 0.76
+    y: 0.45
+    z: 0.46
+  link: /theory/#spectral-tensor-methods
