@@ -65,6 +65,135 @@
   stroke-linecap: round;
 }
 
+.motif__trajectory,
+.motif__decay,
+.motif__network-edge,
+.motif__network-pulse,
+.motif__bond,
+.motif__charge-flow,
+.motif__wire,
+.motif__control {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.motif__trajectory {
+  stroke: rgba(168, 151, 255, 0.25);
+  stroke-width: 1;
+}
+
+.motif__decay {
+  stroke: var(--violet);
+  stroke-width: 1.7;
+  stroke-dasharray: 2 24;
+  opacity: 0.2;
+}
+
+.is-visible .motif__decay {
+  animation: current-flow 7s linear infinite;
+  animation-delay: calc(var(--i) * -1.35s);
+}
+
+.motif__attractor-ring {
+  fill: none;
+  stroke: rgba(116, 230, 178, 0.32);
+  stroke-width: 1;
+  stroke-dasharray: 2 7;
+}
+
+.motif__reservoir {
+  fill: rgba(113, 225, 255, 0.035);
+  stroke: rgba(113, 225, 255, 0.26);
+}
+
+.motif__reservoir-level {
+  stroke: rgba(113, 225, 255, 0.22);
+  stroke-width: 1;
+}
+
+.motif__bond {
+  stroke: rgba(217, 231, 239, 0.44);
+  stroke-width: 1.3;
+}
+
+.motif__molecule-node {
+  fill: var(--ink-900);
+  stroke: var(--gold);
+  stroke-width: 1.4;
+}
+
+.motif__charge-flow {
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-dasharray: 1 22;
+  opacity: 0.65;
+}
+
+.is-visible .motif__charge-flow {
+  animation: charge-flow 6s linear infinite;
+  animation-delay: calc(var(--i) * -1.6s);
+}
+
+.motif__network-edge {
+  stroke: rgba(168, 151, 255, 0.25);
+  stroke-width: 1.1;
+}
+
+.motif__network-pulse {
+  stroke: var(--violet);
+  stroke-width: 2;
+  stroke-dasharray: 1 28;
+  opacity: 0.72;
+}
+
+.is-visible .motif__network-pulse {
+  animation: charge-flow 6.8s linear infinite;
+  animation-delay: calc(var(--i) * -0.7s);
+}
+
+.motif__node-shell--violet { stroke: rgba(168, 151, 255, 0.5); }
+.motif__node-core--violet { fill: var(--violet); }
+
+.motif__matrix-entry {
+  fill: rgba(113, 225, 255, 0.68);
+}
+
+.motif__software-node {
+  fill: rgba(5, 8, 17, 0.9);
+  stroke: var(--green);
+  stroke-width: 1.5;
+}
+
+.motif__wire {
+  stroke: rgba(151, 218, 244, 0.3);
+  stroke-width: 1.2;
+}
+
+.motif__gate {
+  fill: rgba(168, 151, 255, 0.12);
+  stroke: rgba(168, 151, 255, 0.72);
+}
+
+.motif__control {
+  stroke: rgba(168, 151, 255, 0.55);
+}
+
+.motif__control-node {
+  fill: var(--violet);
+}
+
+.motif__algorithm-node {
+  fill: var(--ink-900);
+  stroke: var(--cyan);
+  stroke-width: 1.5;
+}
+
+.is-visible .motif__algorithm-node,
+.is-visible .motif__matrix-entry {
+  animation: node-breathe 5s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * -0.45s);
+}
+
 .motif__current {
   stroke-width: 2;
   stroke-dasharray: 1 19;
@@ -125,6 +254,15 @@
 @keyframes configuration-drift {
   from { transform: rotate(-1.3deg) scale(0.985); }
   to { transform: rotate(1.3deg) scale(1.015); }
+}
+
+@keyframes charge-flow {
+  to { stroke-dashoffset: -92; }
+}
+
+@keyframes node-breathe {
+  from { opacity: 0.28; }
+  to { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {

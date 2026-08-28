@@ -225,3 +225,32 @@
 .direction-visual--route .direction-visual__canvas {
   height: clamp(20rem, 30vw, 31rem);
 }
+
+.research-grid,
+.route-grid--research {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+
+.direction-visual--compact .direction-visual__canvas {
+  height: clamp(15rem, 20vw, 22rem);
+}
+
+.direction-visual--compact .direction-visual__meta {
+  min-height: 10rem;
+  padding: 1.2rem;
+}
+
+.direction-visual--compact h3 {
+  font-size: clamp(1.2rem, 1.45vw, 1.7rem);
+}
+
+.direction-visual--compact .direction-visual__meta > p:last-child {
+  font-size: 0.7rem;
+}
+
+.route-grid--research .direction-visual:nth-child(n + 4) {
+  grid-column: span 1;
+}
