@@ -1,0 +1,50 @@
+main {
+  min-height: calc(100vh - 8rem);
+}
+
+.page-shell {
+  width: min(88vw, 980px);
+  min-height: calc(100vh - 8rem);
+  margin: 0 auto;
+  padding: calc(var(--header-height) + var(--space-4)) 0 var(--space-4);
+}
+
+.page-shell--wide {
+  width: var(--page);
+}
+
+.page-heading {
+  max-width: 920px;
+  margin-bottom: var(--space-3);
+}
+
+.page-heading h1 {
+  max-width: 15ch;
+  margin-bottom: 1.4rem;
+  font-size: clamp(3.2rem, 8vw, 7.6rem);
+}
+
+.page-summary {
+  max-width: 50ch;
+  color: var(--text-soft);
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+}
+
+.site-footer {
+  display: flex;
+  width: var(--page);
+  margin: 0 auto;
+  padding: 1.5rem 0 2rem;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--text-faint);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+}
+
+.site-footer p {
+  margin: 0;
+}

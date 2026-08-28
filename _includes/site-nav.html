@@ -1,0 +1,22 @@
+<header class="site-header" data-site-header>
+  <a class="site-mark" href="{{ '/' | relative_url }}" aria-label="Michael Miko Iv — home">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <circle cx="16" cy="16" r="11.5"></circle>
+      <path d="M4.5 16h23M16 4.5c4 3.5 6.1 7.3 6.1 11.5S20 24 16 27.5M16 4.5C12 8 9.9 11.8 9.9 16S12 24 16 27.5"></path>
+    </svg>
+    <span>MI</span>
+  </a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-nav-toggle>
+    <span class="nav-toggle__label">Menu</span>
+    <span class="nav-toggle__glyph" aria-hidden="true"><i></i><i></i></span>
+  </button>
+  <nav class="primary-nav" id="primary-navigation" aria-label="Primary" data-primary-nav>
+    <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
+    <a href="{{ '/theory/' | relative_url }}"{% if page.url == '/theory/' %} aria-current="page"{% endif %}>Theory</a>
+    <a href="{{ '/research/' | relative_url }}"{% if page.url == '/research/' %} aria-current="page"{% endif %}>Research</a>
+    <a href="{{ '/applications/' | relative_url }}"{% if page.url == '/applications/' %} aria-current="page"{% endif %}>Applications</a>
+    <a href="{{ '/publications/' | relative_url }}"{% if page.url == '/publications/' %} aria-current="page"{% endif %}>Publications</a>
+    <a href="{{ '/cv/' | relative_url }}"{% if page.url == '/cv/' %} aria-current="page"{% endif %}>CV</a>
+    <a href="{{ '/contact/' | relative_url }}"{% if page.url == '/contact/' %} aria-current="page"{% endif %}>Contact</a>
+  </nav>
+</header>

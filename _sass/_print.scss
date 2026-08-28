@@ -1,0 +1,28 @@
+@media print {
+  :root {
+    --text: #111;
+    --text-soft: #333;
+    --text-faint: #555;
+    --ink-950: #fff;
+    --ink-900: #fff;
+    --line: #bbb;
+  }
+
+  body {
+    color: #111;
+    background: #fff;
+  }
+
+  body::before,
+  .site-header,
+  .site-footer,
+  .scientific-visual,
+  .research-sphere {
+    display: none !important;
+  }
+
+  .page-shell {
+    width: 100%;
+    padding: 0;
+  }
+}
