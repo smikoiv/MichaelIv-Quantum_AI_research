@@ -65,13 +65,15 @@
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.42);
     backdrop-filter: blur(18px);
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
     transform: translateY(-0.5rem);
-    transition: opacity 160ms ease, transform 160ms ease;
+    transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
   }
 
   .primary-nav.is-open {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
   }
@@ -171,6 +173,10 @@
 
   .hero__identity h1 {
     font-size: clamp(3.4rem, 19vw, 5.6rem);
+  }
+
+  .social-links--compact a {
+    min-height: 2.75rem;
   }
 
   .section-heading {

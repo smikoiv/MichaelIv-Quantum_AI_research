@@ -12,6 +12,7 @@ export function createInteractions(root, model, callbacks) {
     activeIndex: -1,
   };
   let pointer = null;
+  let keyboardMode = false;
 
   const select = (index) => {
     if (index < 0 || index >= model.items.length) return;
@@ -23,13 +24,19 @@ export function createInteractions(root, model, callbacks) {
   };
 
   labels.forEach((label, index) => {
-    label.addEventListener('pointerenter', () => select(index));
-    label.addEventListener('focus', () => select(index));
+    label.addEventListener('pointerenter', () => {
+      if (!keyboardMode) select(index);
+    });
+    label.addEventListener('focus', () => {
+      keyboardMode = true;
+      select(index);
+    });
   });
 
   enableSpatialKeyboard(labels, select);
 
   stage.addEventListener('pointermove', (event) => {
+    keyboardMode = false;
     const bounds = stage.getBoundingClientRect();
     state.parallaxX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
     state.parallaxY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
@@ -41,6 +48,7 @@ export function createInteractions(root, model, callbacks) {
   }, { passive: true });
 
   stage.addEventListener('pointerdown', (event) => {
+    keyboardMode = false;
     if (event.target.closest('a')) return;
     state.dragging = true;
     pointer = { x: event.clientX, y: event.clientY };

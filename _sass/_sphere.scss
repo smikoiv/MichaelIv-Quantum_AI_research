@@ -195,7 +195,7 @@
 .research-sphere.is-fallback .sphere-labels,
 .no-js .sphere-labels {
   position: absolute;
-  inset: auto 3% 4rem;
+  inset: auto 3% 8rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.45rem;
@@ -208,7 +208,7 @@
   transform: none;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 860px) {
   .research-sphere {
     min-height: auto;
   }

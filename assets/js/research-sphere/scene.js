@@ -28,8 +28,8 @@ export function createSphereScene(container, model) {
   const root = new THREE.Group();
   scene.add(root);
 
-  const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x71e1ff, wireframe: true, transparent: true, opacity: 0.115 });
-  root.add(new THREE.Mesh(new THREE.SphereGeometry(2.05, 32, 24), sphereMaterial));
+  const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x71e1ff, wireframe: true, transparent: true, opacity: 0.105 });
+  root.add(new THREE.Mesh(new THREE.SphereGeometry(2.05, 24, 16), sphereMaterial));
 
   const coordinateMaterial = new THREE.LineBasicMaterial({ color: 0x9edff0, transparent: true, opacity: 0.13 });
   [
