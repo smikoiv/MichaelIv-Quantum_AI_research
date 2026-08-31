@@ -1,0 +1,99 @@
+download_url: ""
+
+sections:
+  - number: "01"
+    id: research-profile
+    type: profile
+    title: Research profile
+    profile: >-
+      Theoretical and computational scientist working across open quantum systems,
+      molecular transport, sparse dynamical systems, scientific computing, and
+      quantum algorithms. My research focuses on extracting mathematical structure
+      from complex dynamical systems and translating it into efficient computational
+      models across physical and applied domains.
+
+  - number: "02"
+    id: experience
+    type: experience
+    title: Experience
+    entries:
+      - organization: DTU — Technical University of Denmark
+        role: Computational Modeler
+        date: June 2026 – Present
+        location: Kongens Lyngby, Denmark
+        description: >-
+          Scientific computing and mathematical modelling for geospatial environmental
+          and human-health impact assessment, combining sparse dynamical systems,
+          graph-based data structures, transport modelling, and scientific Python.
+      - organization: University of Copenhagen — Department of Chemistry
+        role: Postdoctoral Research Scientist
+        date: June 2024 – May 2026
+        location: Copenhagen, Denmark
+        description: >-
+          Research on quantum interference and transport in molecular systems, with
+          emphasis on phase coherence, open-system dynamics, and molecular
+          architectures for quantum-information concepts.
+      - organization: KLA
+        role: Application Engineer — Optical Metrology & Adaptive Sampling
+        date: October 2022 – June 2024
+        location: Migdal HaEmek, Israel
+        description: >-
+          Developed algorithms for semiconductor optical metrology and adaptive
+          sampling, targeting measurement efficiency, process variation, and overlay
+          metrology. Named inventor on a U.S. patent application arising from this work.
+      - organization: Microsoft
+        role: Research Intern
+        date: February 2017 – June 2017
+        location: Herzliya, Israel
+        description: Developed mathematical epidemic models using social-network data.
+      - organization: Israeli Air Force
+        role: Computational Fluid Dynamics Officer
+        date: October 2006 – September 2010
+        location: Israel
+        description: >-
+          Performed computational fluid-dynamics, particle-transport, and heat-transfer
+          modelling to support engineering and operational decisions.
+
+  - number: "03"
+    id: education
+    type: education
+    title: Education
+    entries:
+      - institution: Technion — Israel Institute of Technology
+        degree: PhD, Theoretical Chemistry
+        date: 2018 – 2024
+      - institution: Technion — Israel Institute of Technology
+        degree: MSc, Theoretical Physical Chemistry
+        date: 2015 – 2017
+      - institution: Technion — Israel Institute of Technology
+        degree: BSc, Physical Chemistry
+        date: 2012 – 2014
+
+  - number: "04"
+    id: selected-record
+    type: selected
+    title: Selected record
+    patent:
+      label: Patent
+      title: System and Method for Multi-Merit Adaptive Sampling in Overlay Metrology
+      role_label: Role
+      role: Named inventor
+      application_label: U.S. patent application
+      application: "20250369754"
+    honors:
+      label: Honors & Awards
+      entries:
+        - Gutwirth Scholarship for Outstanding M.Sc. Students
+        - First Place — Poster Contest, 8th Schulich Graduate Student Symposium
+        - Second Place — Israeli National Chemistry Olympiad
+        - Awards for Academic Excellence and Social Contribution
+        - Dean’s Award for Excellence in Undergraduate Studies
+    publications:
+      label: Publications
+      summary: Peer-reviewed research in open quantum systems, molecular transport, and nonequilibrium dynamics.
+      link_label: View publications
+      link: /publications/
+    contact:
+      label: Research correspondence
+      link_label: Contact
+      link: /contact/

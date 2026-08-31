@@ -1,0 +1,335 @@
+.research-sphere {
+  position: relative;
+  min-width: 0;
+  min-height: 38rem;
+  isolation: isolate;
+}
+
+.sphere-copy {
+  position: absolute;
+  bottom: 2.7rem;
+  left: 0;
+  z-index: 8;
+  width: min(22rem, 38%);
+  pointer-events: none;
+}
+
+.sphere-copy .eyebrow {
+  margin-bottom: 0.6rem;
+}
+
+.sphere-status {
+  min-height: 3.2em;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+}
+
+.sphere-stage {
+  position: relative;
+  width: 100%;
+  min-height: 38rem;
+  aspect-ratio: 1.25 / 1;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.sphere-stage.is-dragging {
+  cursor: grabbing;
+}
+
+.sphere-canvas,
+.sphere-static,
+.sphere-labels {
+  position: absolute;
+  inset: 0;
+}
+
+.sphere-canvas {
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 700ms var(--ease);
+}
+
+.sphere-canvas canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.is-webgl .sphere-canvas {
+  opacity: 1;
+}
+
+.sphere-static {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding: 4%;
+  color: rgba(113, 225, 255, 0.2);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.75;
+  opacity: 1;
+  transition: opacity 500ms ease;
+}
+
+.is-webgl .sphere-static {
+  opacity: 0;
+}
+
+.sphere-static__orbit {
+  stroke-width: 1.1;
+  stroke-dasharray: 5 8;
+}
+
+.sphere-static__orbit--a { color: rgba(168, 151, 255, 0.28); }
+.sphere-static__orbit--b { color: rgba(116, 230, 178, 0.25); }
+
+.sphere-static__network {
+  color: rgba(168, 151, 255, 0.2);
+}
+
+.sphere-static__network path {
+  stroke-dasharray: 3 8;
+}
+
+.sphere-static__network circle {
+  fill: rgba(113, 225, 255, 0.5);
+  stroke: rgba(113, 225, 255, 0.7);
+}
+
+.sphere-labels {
+  z-index: 5;
+  pointer-events: none;
+}
+
+.sphere-node {
+  --node-color: var(--cyan);
+  position: absolute;
+  top: var(--label-y, 50%);
+  left: var(--label-x, 50%);
+  display: inline-flex;
+  min-height: 2.25rem;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.65rem 0.45rem 0.5rem;
+  border: 1px solid rgba(151, 205, 231, 0.12);
+  border-radius: 999px;
+  color: #b6c9d3;
+  background: rgba(5, 8, 17, 0.76);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  font-family: var(--mono);
+  font-size: clamp(0.64rem, 0.7vw, 0.75rem);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  opacity: calc(1.12 - (var(--label-depth, 0) * 0.28));
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+}
+
+.sphere-node::before {
+  width: 0.42rem;
+  height: 0.42rem;
+  flex: 0 0 auto;
+  border: 1px solid var(--node-color);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--node-color) 22%, transparent);
+  content: "";
+  box-shadow: 0 0 0.65rem color-mix(in srgb, var(--node-color) 32%, transparent);
+}
+
+.sphere-node--research { --node-color: var(--violet); }
+.sphere-node--applications { --node-color: var(--green); }
+
+.sphere-node:hover,
+.sphere-node:focus-visible,
+.sphere-node.is-selected {
+  z-index: 10;
+  color: #f3fbff;
+  border-color: color-mix(in srgb, var(--node-color) 62%, transparent);
+  background: rgba(9, 16, 29, 0.94);
+  box-shadow: 0 0.75rem 2.8rem rgba(0, 0, 0, 0.34);
+  opacity: 1;
+}
+
+.sphere-node.is-distant:not(:hover):not(:focus-visible):not(.is-selected) {
+  opacity: 0.68;
+}
+
+.research-sphere.is-loading .sphere-labels {
+  opacity: 0;
+}
+
+.sphere-legend {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 26%;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  color: var(--text-faint);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.sphere-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sphere-legend__item::before {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: currentColor;
+  content: "";
+}
+
+.sphere-legend__item--theory { color: var(--cyan); }
+.sphere-legend__item--research { color: var(--violet); }
+.sphere-legend__item--applications { color: var(--green); }
+.sphere-legend__note { margin-left: 0.5rem; }
+
+.research-sphere.is-fallback .sphere-stage,
+.no-js .sphere-stage {
+  min-height: 42rem;
+  cursor: default;
+}
+
+.research-sphere.is-fallback .sphere-labels,
+.no-js .sphere-labels {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.research-sphere.is-fallback .sphere-node,
+.no-js .sphere-node {
+  position: absolute;
+  top: var(--fallback-y);
+  left: var(--fallback-x);
+  min-width: 0;
+  min-height: 2rem;
+  padding: 0.35rem 0.5rem;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(90deg, rgba(5, 8, 17, 0.9), rgba(5, 8, 17, 0.18));
+  box-shadow: none;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.research-sphere.is-fallback .sphere-node::after,
+.no-js .sphere-node::after {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.1rem;
+  left: 0.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--node-color), transparent);
+  content: "";
+  opacity: 0.28;
+}
+
+@media (max-width: 860px) {
+  .research-sphere {
+    min-height: auto;
+  }
+
+  .sphere-stage {
+    display: grid;
+    min-height: 0;
+    aspect-ratio: auto;
+    padding-top: min(88vw, 28rem);
+    cursor: grab;
+  }
+
+  .sphere-canvas,
+  .sphere-static {
+    width: 100%;
+    height: min(88vw, 28rem);
+  }
+
+  .sphere-labels {
+    position: relative;
+    inset: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.45rem;
+    padding: 1rem 0 0;
+  }
+
+  .sphere-node {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    min-height: 2.8rem;
+    white-space: normal;
+    transform: none;
+  }
+
+  .research-sphere.is-fallback .sphere-stage,
+  .no-js .sphere-stage {
+    display: block;
+    height: min(92vw, 32rem);
+    min-height: 0;
+    padding-top: 0;
+  }
+
+  .research-sphere.is-fallback .sphere-static,
+  .no-js .sphere-static {
+    height: 100%;
+  }
+
+  .research-sphere.is-fallback .sphere-labels,
+  .no-js .sphere-labels {
+    position: absolute;
+    inset: 0;
+    display: block;
+    padding: 0;
+  }
+
+  .research-sphere.is-fallback .sphere-node,
+  .no-js .sphere-node {
+    position: absolute;
+    top: var(--fallback-y);
+    left: var(--fallback-x);
+    width: auto;
+    max-width: 8.5rem;
+    min-height: 1.9rem;
+    font-size: 0.55rem;
+    transform: translate(-50%, -50%);
+  }
+
+  .sphere-copy {
+    position: static;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .sphere-status {
+    min-height: 2.8em;
+  }
+
+  .sphere-legend {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    margin-top: 1rem;
+    justify-content: start;
+  }
+
+  .sphere-legend__note {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+}

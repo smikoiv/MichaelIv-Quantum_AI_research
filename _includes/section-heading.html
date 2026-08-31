@@ -1,0 +1,8 @@
+<header class="section-heading">
+  <p class="eyebrow">{{ include.index }}</p>
+  <div>
+    <h2 id="{{ include.id }}">{{ include.title }}</h2>
+    {% if include.note %}<p>{{ include.note }}</p>{% endif %}
+  </div>
+  {% if include.link %}<a class="section-heading__link" href="{{ include.link | relative_url }}">Explore {{ include.title }} <span aria-hidden="true">↗</span></a>{% endif %}
+</header>

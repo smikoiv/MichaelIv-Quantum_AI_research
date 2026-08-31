@@ -1,0 +1,78 @@
+---
+title: Contact
+permalink: /contact/
+eyebrow: Private channel
+summary: A direct channel for research correspondence.
+body_class: contact-page
+wide: true
+contact_form: true
+---
+<div class="contact-panel" data-contact-panel>
+  <svg class="contact-panel__geometry" viewBox="0 0 620 660" aria-hidden="true">
+    <defs>
+      <linearGradient id="contact-orbit-gradient" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#71e1ff" stop-opacity=".08" />
+        <stop offset=".52" stop-color="#a897ff" stop-opacity=".42" />
+        <stop offset="1" stop-color="#71e1ff" stop-opacity=".12" />
+      </linearGradient>
+      <linearGradient id="contact-path-gradient" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#71e1ff" stop-opacity=".04" />
+        <stop offset=".55" stop-color="#71e1ff" stop-opacity=".56" />
+        <stop offset="1" stop-color="#a897ff" stop-opacity=".08" />
+      </linearGradient>
+    </defs>
+    <circle class="contact-panel__coordinate" cx="370" cy="330" r="192" />
+    <ellipse class="contact-panel__orbit contact-panel__orbit--one" cx="370" cy="330" rx="254" ry="102" />
+    <ellipse class="contact-panel__orbit contact-panel__orbit--two" cx="370" cy="330" rx="116" ry="252" transform="rotate(38 370 330)" />
+    <path class="contact-panel__current" d="M28 478C128 468 166 397 225 350C290 298 349 298 423 226C472 179 526 159 602 178" />
+    <circle class="contact-panel__node contact-panel__node--one" cx="225" cy="350" r="4" />
+    <circle class="contact-panel__node contact-panel__node--two" cx="423" cy="226" r="4" />
+  </svg>
+
+  <form class="contact-form" action="{{ site.data.contact.formspree_endpoint }}" method="POST" data-contact-form>
+    <div class="contact-form__fields">
+      <div class="contact-field">
+        <label for="contact-name">Name <span aria-hidden="true">*</span></label>
+        <input id="contact-name" name="name" type="text" autocomplete="name" required>
+      </div>
+
+      <div class="contact-field">
+        <label for="contact-email">Email <span aria-hidden="true">*</span></label>
+        <input id="contact-email" name="email" type="email" autocomplete="email" required>
+      </div>
+
+      <div class="contact-field">
+        <label for="contact-organization">Affiliation / organization</label>
+        <input id="contact-organization" name="organization" type="text" autocomplete="organization">
+      </div>
+
+      <div class="contact-field">
+        <label for="contact-subject">Subject</label>
+        <input id="contact-subject" name="subject" type="text">
+      </div>
+
+      <div class="contact-field contact-field--message">
+        <label for="contact-message">Message <span aria-hidden="true">*</span></label>
+        <textarea id="contact-message" name="message" rows="6" required></textarea>
+      </div>
+    </div>
+
+    <div class="visually-hidden" aria-hidden="true">
+      <label for="contact-company">Leave this field empty</label>
+      <input id="contact-company" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="contact-form__actions">
+      <button class="contact-form__submit" type="submit">
+        <span>Send message</span>
+        <svg viewBox="0 0 18 18" aria-hidden="true"><path d="m3 9 11-5-3.2 10-2.1-4.7L3 9Z"></path></svg>
+      </button>
+      <p class="contact-form__status" role="status" aria-live="polite" aria-atomic="true" data-contact-status></p>
+    </div>
+  </form>
+
+  <aside class="contact-panel__profiles" aria-labelledby="verified-profiles-title">
+    <p class="eyebrow" id="verified-profiles-title">Verified profiles</p>
+    {% include social-links.html %}
+  </aside>
+</div>

@@ -1,0 +1,49 @@
+- year: 2024
+  title: "Emergence of Boltzmann Subspaces in Open Quantum Systems Far from Equilibrium"
+  authors:
+    - name: Michael Iv
+      self: true
+    - name: Saar Rahav
+    - name: Uri Peskin
+  journal: Physical Review Letters
+  volume: 132
+  article: "110401"
+  doi: 10.1103/PhysRevLett.132.110401
+
+- year: 2020
+  title: "Ballistic transport and quantum unfurling in molecular junctions via minimal representations of quantum master equations"
+  authors:
+    - name: Michael Iv
+      self: true
+    - name: Uri Peskin
+  journal: The Journal of Chemical Physics
+  volume: 152
+  issue: 18
+  article: "184112"
+  doi: 10.1063/5.0005412
+
+- year: 2018
+  title: "Formulation of Long-Range Transport Rates through Molecular Bridges: From Unfurling to Hopping"
+  authors:
+    - name: Ariel D. Levine
+    - name: Michael Iv
+      self: true
+    - name: Uri Peskin
+  journal: The Journal of Physical Chemistry Letters
+  volume: 9
+  issue: 15
+  pages: "4139–4145"
+  doi: 10.1021/acs.jpclett.8b01581
+
+- year: 2016
+  title: "Length-independent transport rates in biomolecules by quantum mechanical unfurling"
+  authors:
+    - name: Ariel D. Levine
+    - name: Michael Iv
+      self: true
+    - name: Uri Peskin
+  journal: Chemical Science
+  volume: 7
+  issue: 2
+  pages: "1535–1542"
+  doi: 10.1039/C5SC03495G

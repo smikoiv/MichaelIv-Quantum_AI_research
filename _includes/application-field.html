@@ -1,0 +1,99 @@
+<div class="application-field" data-application-field>
+  <svg class="application-field__map" viewBox="0 0 1200 600" role="presentation" aria-hidden="true">
+    <defs>
+      <linearGradient id="application-flow" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#71e1ff"></stop>
+        <stop offset=".5" stop-color="#74e6b2"></stop>
+        <stop offset="1" stop-color="#e7c878"></stop>
+      </linearGradient>
+    </defs>
+    <g class="application-field__orbits">
+      <ellipse cx="600" cy="300" rx="500" ry="205"></ellipse>
+      <ellipse cx="600" cy="300" rx="430" ry="260" transform="rotate(-12 600 300)"></ellipse>
+      <path d="M96 376C270 84 488 78 614 300s314 235 492-64"></path>
+      <path d="M98 225c160 215 322 220 500 52s330-154 504 54"></path>
+    </g>
+    <g class="application-field__radials application-field__radials--desktop">
+      <path d="M600 300Q404 240 150 150"></path>
+      <path d="M600 300Q376 380 190 456"></path>
+      <path d="M600 300Q548 188 500 72"></path>
+      <path d="M600 300Q680 174 800 78"></path>
+      <path d="M600 300Q820 224 1056 174"></path>
+      <path d="M600 300Q820 390 1010 458"></path>
+    </g>
+    <circle class="application-field__core-orbit application-field__core-orbit--outer" cx="600" cy="300" r="124"></circle>
+    <circle class="application-field__core-orbit" cx="600" cy="300" r="96"></circle>
+    <circle class="application-field__core" cx="600" cy="300" r="78"></circle>
+  </svg>
+  <svg class="application-field__map application-field__map--mobile" viewBox="0 0 360 440" role="presentation" aria-hidden="true">
+    <defs>
+      <linearGradient id="application-flow-mobile" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#71e1ff"></stop>
+        <stop offset=".5" stop-color="#74e6b2"></stop>
+        <stop offset="1" stop-color="#e7c878"></stop>
+      </linearGradient>
+    </defs>
+    <g class="application-field__orbits application-field__orbits--mobile">
+      <ellipse cx="180" cy="220" rx="151" ry="188"></ellipse>
+      <ellipse cx="180" cy="220" rx="130" ry="193" transform="rotate(16 180 220)"></ellipse>
+      <path d="M30 298C86 118 132 82 180 220s96 138 150-78"></path>
+    </g>
+    <g class="application-field__radials application-field__radials--mobile">
+      <path d="M180 220Q126 136 72 70"></path>
+      <path d="M180 220Q234 134 288 70"></path>
+      <path d="M180 220H52"></path>
+      <path d="M180 220H308"></path>
+      <path d="M180 220Q124 306 75 370"></path>
+      <path d="M180 220Q236 306 285 370"></path>
+    </g>
+    <circle class="application-field__core-orbit application-field__core-orbit--outer" cx="180" cy="220" r="66"></circle>
+    <circle class="application-field__core-orbit" cx="180" cy="220" r="52"></circle>
+    <circle class="application-field__core" cx="180" cy="220" r="43"></circle>
+  </svg>
+  <div class="application-field__mathematical-core" aria-label="Shared Mathematical Structure">
+    <div class="application-field__core-frame">
+      <svg viewBox="0 0 180 180" role="img" aria-label="Sparse operator transforming into a connected spectral network">
+        <circle class="application-core__guide" cx="90" cy="90" r="65"></circle>
+        <g class="application-core__operator" aria-hidden="true">
+          <rect x="37" y="52" width="11" height="11" rx="1"></rect>
+          <rect x="55" y="52" width="11" height="11" rx="1"></rect>
+          <rect x="73" y="52" width="11" height="11" rx="1"></rect>
+          <rect x="37" y="70" width="11" height="11" rx="1"></rect>
+          <rect x="73" y="70" width="11" height="11" rx="1"></rect>
+          <rect x="37" y="88" width="11" height="11" rx="1"></rect>
+          <rect x="55" y="88" width="11" height="11" rx="1"></rect>
+          <rect x="73" y="88" width="11" height="11" rx="1"></rect>
+        </g>
+        <path class="application-core__transfer" d="M84 76C99 74 101 91 111 91"></path>
+        <g class="application-core__network" aria-hidden="true">
+          <path d="M114 52L138 69L127 96L148 116L116 130L96 106L111 91"></path>
+          <path d="M138 69L111 91L127 96M96 106L127 96L116 130"></path>
+          <circle cx="114" cy="52" r="3.5"></circle>
+          <circle cx="138" cy="69" r="3.5"></circle>
+          <circle cx="111" cy="91" r="3.5"></circle>
+          <circle cx="127" cy="96" r="3.5"></circle>
+          <circle cx="96" cy="106" r="3.5"></circle>
+          <circle cx="148" cy="116" r="3.5"></circle>
+          <circle cx="116" cy="130" r="3.5"></circle>
+        </g>
+        <g class="application-core__spectrum" aria-hidden="true">
+          <path d="M40 123H72"></path>
+          <path d="M40 132H64"></path>
+          <path d="M40 141H78"></path>
+        </g>
+      </svg>
+    </div>
+    <p>
+      <span>Shared Mathematical Structure</span>
+      <small>One foundation · six directions</small>
+    </p>
+  </div>
+  <div class="application-field__nodes">
+    {% for item in site.data.applications %}
+      <a class="application-field__node application-field__node--{{ forloop.index }}" id="{{ item.title | slugify }}" href="{{ item.link | relative_url }}" data-application-node data-application-index="{{ forloop.index0 }}">
+        <span>{{ item.title }}</span>
+        <small>{{ item.description }}</small>
+      </a>
+    {% endfor %}
+  </div>
+</div>

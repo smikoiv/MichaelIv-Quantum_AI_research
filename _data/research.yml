@@ -1,0 +1,60 @@
+- title: Open Quantum Systems
+  sphere_group: research
+  sphere_order: 2
+  short_label: Open Systems
+  description: Dissipation across evolving state spaces.
+  icon: open-system
+  visual_type: dissipative
+  sphere_coordinates:
+    x: 0.72
+    y: 0.38
+    z: -0.58
+  link: /research/#open-quantum-systems
+- title: Molecular Transport
+  sphere_group: research
+  sphere_order: 5
+  short_label: Molecular Transport
+  description: Current through coupled molecular structure.
+  icon: molecular-transport
+  visual_type: molecular
+  sphere_coordinates:
+    x: -0.55
+    y: -0.66
+    z: -0.51
+  link: /research/#molecular-transport
+- title: Stochastic Networks
+  sphere_group: research
+  sphere_order: 7
+  short_label: Stochastic Networks
+  description: Random transitions and directed probability flow.
+  icon: stochastic-network
+  visual_type: stochastic
+  sphere_coordinates:
+    x: -0.82
+    y: 0.48
+    z: -0.31
+  link: /research/#stochastic-networks
+- title: Scientific Software
+  sphere_group: research
+  sphere_order: 11
+  short_label: Scientific Software
+  description: Graph, operator, and numerical representations.
+  icon: sparse-matrix
+  visual_type: sparse
+  sphere_coordinates:
+    x: 0.18
+    y: -0.15
+    z: 0.97
+  link: /research/#scientific-software
+- title: Quantum Algorithms
+  sphere_group: research
+  sphere_order: 13
+  short_label: Quantum Algorithms
+  description: Circuit geometry across structured state spaces.
+  icon: circuit
+  visual_type: circuit
+  sphere_coordinates:
+    x: 0.84
+    y: -0.45
+    z: 0.30
+  link: /research/#quantum-algorithms

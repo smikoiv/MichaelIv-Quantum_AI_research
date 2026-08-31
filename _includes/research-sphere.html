@@ -1,0 +1,56 @@
+<section class="research-sphere" aria-labelledby="sphere-title" data-research-sphere>
+  <div class="sphere-copy">
+    <p class="eyebrow">Research landscape</p>
+    <h2 id="sphere-title" class="visually-hidden">Interactive research landscape</h2>
+    <p class="sphere-status" id="sphere-description" aria-live="polite">Choose a direction to trace its position through the research landscape.</p>
+  </div>
+  <div class="sphere-stage" data-sphere-stage>
+    <div class="sphere-canvas" data-sphere-canvas aria-hidden="true"></div>
+    <svg class="sphere-static" viewBox="0 0 640 640" aria-hidden="true">
+      <defs>
+        <radialGradient id="sphere-depth" cx="42%" cy="34%" r="66%">
+          <stop offset="0" stop-color="#71e1ff" stop-opacity=".11"></stop>
+          <stop offset="1" stop-color="#71e1ff" stop-opacity="0"></stop>
+        </radialGradient>
+      </defs>
+      <circle cx="320" cy="320" r="220" fill="url(#sphere-depth)" stroke="currentColor"></circle>
+      <ellipse cx="320" cy="320" rx="220" ry="74"></ellipse>
+      <ellipse cx="320" cy="320" rx="220" ry="142"></ellipse>
+      <ellipse cx="320" cy="320" rx="74" ry="220"></ellipse>
+      <ellipse cx="320" cy="320" rx="142" ry="220"></ellipse>
+      <path d="M78 320H562M320 78V562"></path>
+      <ellipse class="sphere-static__orbit sphere-static__orbit--a" cx="320" cy="320" rx="260" ry="104" transform="rotate(-24 320 320)"></ellipse>
+      <ellipse class="sphere-static__orbit sphere-static__orbit--b" cx="320" cy="320" rx="270" ry="124" transform="rotate(42 320 320)"></ellipse>
+      <g class="sphere-static__network">
+        <path d="M190 242 260 196 328 244 394 190 452 252 386 326 292 318 224 382 170 326Z"></path>
+        <path d="M260 196 292 318M328 244 224 382M394 190 386 326M190 242 452 252"></path>
+        <circle cx="190" cy="242" r="4"></circle>
+        <circle cx="260" cy="196" r="4"></circle>
+        <circle cx="328" cy="244" r="4"></circle>
+        <circle cx="394" cy="190" r="4"></circle>
+        <circle cx="452" cy="252" r="4"></circle>
+        <circle cx="386" cy="326" r="4"></circle>
+        <circle cx="292" cy="318" r="4"></circle>
+        <circle cx="224" cy="382" r="4"></circle>
+        <circle cx="170" cy="326" r="4"></circle>
+      </g>
+    </svg>
+    <div class="sphere-labels" aria-describedby="sphere-description" data-sphere-labels>
+      {% assign sphere_items = site.data.theory | concat: site.data.research | concat: site.data.applications | sort: 'sphere_order' %}
+      {% for item in sphere_items %}
+        {% assign fallback_x = item.sphere_coordinates.x | times: 30 | plus: 50 %}
+        {% assign fallback_y = item.sphere_coordinates.y | times: -30 | plus: 50 %}
+        <a href="{{ item.link | relative_url }}" class="sphere-node sphere-node--{{ item.sphere_group }}" data-sphere-node data-group="{{ item.sphere_group }}" data-index="{{ forloop.index0 }}" data-x="{{ item.sphere_coordinates.x }}" data-y="{{ item.sphere_coordinates.y }}" data-z="{{ item.sphere_coordinates.z }}" data-description="{{ item.description | escape }}" style="--fallback-x: {{ fallback_x }}%; --fallback-y: {{ fallback_y }}%;"><span>{{ item.short_label }}</span></a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="sphere-legend" aria-label="Research landscape groups">
+    <span class="sphere-legend__item sphere-legend__item--theory">Theory</span>
+    <span class="sphere-legend__item sphere-legend__item--research">Research</span>
+    <span class="sphere-legend__item sphere-legend__item--applications">Applications</span>
+    <span class="sphere-legend__note">Position indicates direction, never rank.</span>
+  </div>
+  <script type="application/json" data-sphere-data>
+    {"groups":[{"key":"theory","items":{{ site.data.theory | jsonify }}},{"key":"research","items":{{ site.data.research | jsonify }}},{"key":"applications","items":{{ site.data.applications | jsonify }}}]}
+  </script>
+</section>
