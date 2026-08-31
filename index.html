@@ -10,8 +10,17 @@ visualizations: true
   <div class="hero__identity">
     <p class="eyebrow">Mathematical research</p>
     <h1 id="hero-title">Michael <span>“Miko”</span> Iv</h1>
-    <p class="hero__subtitle">Mathematical Structure in Complex Dynamical Systems</p>
-    {% include social-links.html compact=true %}
+    <div class="hero__identity-support">
+      <div>
+        <p class="hero__subtitle">Mathematical Structure in Complex Dynamical Systems</p>
+        {% include social-links.html compact=true %}
+      </div>
+      <figure class="hero__portrait">
+        <div class="hero__portrait-frame">
+          <img src="{{ '/assets/images/michael-iv-portrait.jpg' | relative_url }}" alt="Portrait of Michael Iv" width="720" height="720" decoding="async" fetchpriority="high">
+        </div>
+      </figure>
+    </div>
   </div>
   {% include research-sphere.html %}
   <a class="hero__continue" href="#theory-home"><span>Trace the structure</span><i aria-hidden="true"></i></a>
