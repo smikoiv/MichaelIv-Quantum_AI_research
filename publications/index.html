@@ -2,38 +2,53 @@
 title: Publications
 permalink: /publications/
 eyebrow: Record
-summary: A verified publication record will appear here.
+summary: Four verified peer-reviewed publications.
 body_class: publications-page
 ---
-<svg class="publication-spectrum" viewBox="0 0 760 92" aria-hidden="true" focusable="false">
-  <path d="M0 56H760"></path>
-  <path class="publication-spectrum__mode" d="M0 56C72 56 86 28 138 28s70 52 126 52 74-68 142-68 82 58 146 58 82-36 208-36"></path>
-  <g>
-    <circle cx="138" cy="28" r="3"></circle>
-    <circle cx="264" cy="80" r="3"></circle>
-    <circle cx="406" cy="12" r="3"></circle>
-    <circle cx="552" cy="70" r="3"></circle>
-  </g>
-</svg>
-{% if site.data.publications.size > 0 %}
-  <ol class="publication-list">
-    {% for publication in site.data.publications %}
-      <li>
-        <article>
-          {% if publication.graphical_abstract %}<img src="{{ publication.graphical_abstract | relative_url }}" alt="Graphical abstract for {{ publication.title }}">{% endif %}
-          <p>{% if publication.topic_tag %}<span>{{ publication.topic_tag }}</span> · {% endif %}{{ publication.year }}</p>
-          <h2>{{ publication.title }}</h2>
-          <p>{{ publication.authors }}</p>
-          <p>{{ publication.journal }}</p>
-          {% if publication.doi %}<a href="https://doi.org/{{ publication.doi }}">DOI</a>{% endif %}
-          {% if publication.external_link %}<a href="{{ publication.external_link }}">External record</a>{% endif %}
-        </article>
-      </li>
-    {% endfor %}
-  </ol>
-{% else %}
-  <div class="empty-state">
-    <p class="eyebrow">Awaiting verified data</p>
-    <p>No publication entries are displayed.</p>
-  </div>
-{% endif %}
+<div class="publication-spectrum" aria-hidden="true">
+  <svg viewBox="0 0 1180 104" focusable="false">
+    <path class="publication-spectrum__axis" d="M0 58H1180"></path>
+    <path class="publication-spectrum__mode" d="M0 58C104 58 124 22 214 22s116 70 220 70S560 10 682 10s138 68 248 68 142-42 250-42"></path>
+    <g class="publication-spectrum__markers">
+      <circle cx="214" cy="22" r="4"></circle>
+      <circle cx="434" cy="92" r="4"></circle>
+      <circle cx="682" cy="10" r="4"></circle>
+      <circle cx="930" cy="78" r="4"></circle>
+    </g>
+    <path class="publication-spectrum__current" d="M0 58C104 58 124 22 214 22s116 70 220 70S560 10 682 10s138 68 248 68 142-42 250-42"></path>
+  </svg>
+  <span>Spectral record · 2016—2024</span>
+</div>
+
+{% assign publications = site.data.publications | sort: 'year' | reverse %}
+<ol class="publication-list" aria-label="Peer-reviewed publications, newest first">
+  {% for publication in publications %}
+    <li class="publication-entry">
+      <article>
+        <div class="publication-entry__time">
+          <span class="publication-entry__year">{{ publication.year }}</span>
+          <span class="publication-entry__marker" aria-hidden="true"><i></i></span>
+        </div>
+        <div class="publication-entry__record">
+          <h2>
+            <a href="https://doi.org/{{ publication.doi }}" rel="external">
+              {{ publication.title }}
+            </a>
+          </h2>
+          <p class="publication-entry__authors">
+            {% for author in publication.authors %}{% if author.self %}<strong>{{ author.name }}</strong>{% else %}{{ author.name }}{% endif %}{% unless forloop.last %}<span aria-hidden="true">; </span>{% endunless %}{% endfor %}
+          </p>
+          <p class="publication-entry__venue">
+            <cite>{{ publication.journal }}</cite>
+            <span>Vol. {{ publication.volume }}{% if publication.issue %}, no. {{ publication.issue }}{% endif %}</span>
+            {% if publication.article %}<span>Article {{ publication.article }}</span>{% endif %}
+            {% if publication.pages %}<span>pp. {{ publication.pages }}</span>{% endif %}
+          </p>
+          <a class="publication-entry__doi" href="https://doi.org/{{ publication.doi }}" rel="external" aria-label="Open DOI {{ publication.doi }}">
+            DOI <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </article>
+    </li>
+  {% endfor %}
+</ol>

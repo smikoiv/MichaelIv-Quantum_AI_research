@@ -153,6 +153,15 @@
     grid-column: 2;
   }
 
+  .publication-list {
+    --timeline-x: 6.75rem;
+  }
+
+  .publication-entry article {
+    grid-template-columns: 5rem minmax(0, 1fr);
+    gap: 3.25rem;
+  }
+
 }
 
 @media (max-width: 520px) {
@@ -315,9 +324,72 @@
     margin-top: 0.55rem;
   }
 
-  .publication-list article,
   .cv-sections > section {
     grid-template-columns: 1fr;
+  }
+
+  .publication-spectrum {
+    margin-top: -1rem;
+    margin-bottom: 2.2rem;
+  }
+
+  .publication-spectrum svg {
+    height: 4rem;
+  }
+
+  .publication-spectrum > span {
+    font-size: 0.54rem;
+  }
+
+  .publication-list {
+    --timeline-x: 0.42rem;
+  }
+
+  .publication-entry {
+    padding: 2.6rem 0 2.8rem 1.7rem;
+  }
+
+  .publication-entry article {
+    display: block;
+  }
+
+  .publication-entry__time {
+    margin-bottom: 0.9rem;
+  }
+
+  .publication-entry__marker {
+    top: 3.15rem;
+  }
+
+  .publication-entry h2 {
+    max-width: none;
+    font-size: clamp(1.55rem, 7.2vw, 2rem);
+  }
+
+  .publication-entry__authors {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .publication-entry__venue {
+    gap: 0.2rem 0.55rem;
+    font-size: 0.66rem;
+  }
+
+  .publication-entry__venue cite {
+    width: 100%;
+  }
+
+  .publication-entry__venue span:first-of-type::before {
+    display: none;
+  }
+
+  .publication-entry__venue span::before {
+    margin-right: 0.55rem;
+  }
+
+  .publication-entry__doi {
+    margin-top: 0.65rem;
   }
 
   .contact-panel::before,
