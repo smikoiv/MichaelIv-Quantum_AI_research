@@ -21,9 +21,9 @@
       <path d="M600 300Q820 224 1056 174"></path>
       <path d="M600 300Q820 390 1010 458"></path>
     </g>
-    <circle class="application-field__core-orbit application-field__core-orbit--outer" cx="600" cy="300" r="112"></circle>
-    <circle class="application-field__core-orbit" cx="600" cy="300" r="88"></circle>
-    <circle class="application-field__core" cx="600" cy="300" r="72"></circle>
+    <circle class="application-field__core-orbit application-field__core-orbit--outer" cx="600" cy="300" r="124"></circle>
+    <circle class="application-field__core-orbit" cx="600" cy="300" r="96"></circle>
+    <circle class="application-field__core" cx="600" cy="300" r="78"></circle>
   </svg>
   <svg class="application-field__map application-field__map--mobile" viewBox="0 0 360 440" role="presentation" aria-hidden="true">
     <defs>
@@ -46,11 +46,19 @@
       <path d="M180 220Q124 306 75 370"></path>
       <path d="M180 220Q236 306 285 370"></path>
     </g>
-    <circle class="application-field__core-orbit application-field__core-orbit--outer" cx="180" cy="220" r="62"></circle>
-    <circle class="application-field__core-orbit" cx="180" cy="220" r="49"></circle>
-    <circle class="application-field__core" cx="180" cy="220" r="39"></circle>
+    <circle class="application-field__core-orbit application-field__core-orbit--outer" cx="180" cy="220" r="66"></circle>
+    <circle class="application-field__core-orbit" cx="180" cy="220" r="52"></circle>
+    <circle class="application-field__core" cx="180" cy="220" r="43"></circle>
   </svg>
-  <p class="application-field__core-label">Shared mathematical structure</p>
+  <figure class="application-field__portrait">
+    <div class="application-field__portrait-frame">
+      <img src="{{ '/assets/images/michael-iv-portrait.jpg' | relative_url }}" alt="Portrait of Michael Miko Iv" width="720" height="720" decoding="async" fetchpriority="high">
+    </div>
+    <figcaption>
+      <span>Shared mathematical structure</span>
+      <small>One foundation · six directions</small>
+    </figcaption>
+  </figure>
   <div class="application-field__nodes">
     {% for item in site.data.applications %}
       <a class="application-field__node application-field__node--{{ forloop.index }}" id="{{ item.title | slugify }}" href="{{ item.link | relative_url }}" data-application-node data-application-index="{{ forloop.index0 }}">

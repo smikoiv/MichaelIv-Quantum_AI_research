@@ -6,14 +6,22 @@ export function initializeApplicationFields() {
       nodes.forEach((node, nodeIndex) => node.classList.toggle('is-active', nodeIndex === index));
     };
 
+    const clear = () => {
+      delete field.dataset.activeApplication;
+      nodes.forEach((node) => node.classList.remove('is-active'));
+    };
+
     nodes.forEach((node, index) => {
       node.addEventListener('pointerenter', () => activate(index));
       node.addEventListener('focus', () => activate(index));
     });
 
     field.addEventListener('pointerleave', () => {
-      delete field.dataset.activeApplication;
-      nodes.forEach((node) => node.classList.remove('is-active'));
+      if (!field.contains(document.activeElement)) clear();
+    });
+
+    field.addEventListener('focusout', (event) => {
+      if (!field.contains(event.relatedTarget)) clear();
     });
   });
 }

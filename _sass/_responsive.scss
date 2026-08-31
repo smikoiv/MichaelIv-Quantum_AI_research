@@ -244,10 +244,31 @@
     stroke: url(#application-flow-mobile);
   }
 
-  .application-field__core-label {
-    top: 50%;
+  .application-field__portrait {
     width: 5.5rem;
+  }
+
+  .application-field__portrait-frame {
+    padding: 0.15rem;
+  }
+
+  .application-field__portrait-frame::after {
+    inset: 0.15rem;
+  }
+
+  .application-field__portrait figcaption {
+    top: calc(100% + 0.8rem);
+    width: 14rem;
+  }
+
+  .application-field__portrait figcaption span {
     font-size: 0.52rem;
+    letter-spacing: 0.075em;
+  }
+
+  .application-field__portrait figcaption small {
+    margin-top: 0.12rem;
+    font-size: 0.5rem;
   }
 
   .application-field__nodes {
