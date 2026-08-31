@@ -2,8 +2,8 @@ title: Michael "Miko" Iv
 tagline: Mathematical Structure in Complex Dynamical Systems
 description: Mathematical structure, state-space dynamics, and complex flow systems.
 lang: en
-url: ""
-baseurl: ""
+url: "https://smikoiv.github.io"
+baseurl: "/MichaelIv-Quantum_AI_research"
 repository: smikoiv/MichaelIv-Quantum_AI_research
 
 theme: cvless
