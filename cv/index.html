@@ -2,37 +2,105 @@
 title: CV
 permalink: /cv/
 eyebrow: Curriculum vitae
-summary: A structured framework for a verified professional record.
+summary: Research, experience, education, and selected technical record.
 body_class: cv-page
+wide: true
 ---
 {% if site.data.cv.download_url != empty %}
   <a class="cv-download" href="{{ site.data.cv.download_url | relative_url }}">Download PDF CV</a>
 {% endif %}
 
-{% if site.data.cv.sections.size > 0 %}
-  <div class="cv-sections">
-    {% for section in site.data.cv.sections %}
-      <section>
-        <h2>{{ section.title }}</h2>
-        {% for entry in section.entries %}
-          <article>
-            <h3>{{ entry.title }}</h3>
-            {% if entry.subtitle %}<p>{{ entry.subtitle }}</p>{% endif %}
-            {% if entry.date %}<time>{{ entry.date }}</time>{% endif %}
-          </article>
-        {% endfor %}
-      </section>
-    {% endfor %}
-  </div>
-{% else %}
-  <div class="cv-framework" aria-label="CV framework awaiting verified information">
-    <div><span>01</span><p>Research profile</p></div>
-    <div><span>02</span><p>Experience</p></div>
-    <div><span>03</span><p>Education</p></div>
-    <div><span>04</span><p>Selected record</p></div>
-  </div>
-  <div class="empty-state">
-    <p class="eyebrow">Awaiting verified data</p>
-    <p>No biographical entries are displayed.</p>
-  </div>
-{% endif %}
+<div class="cv-trajectory" aria-label="Curriculum vitae">
+  {% for section in site.data.cv.sections %}
+    <section class="cv-trajectory__section cv-trajectory__section--{{ section.type }}" id="{{ section.id }}">
+      <header class="cv-trajectory__heading">
+        <span class="cv-trajectory__number" aria-hidden="true">{{ section.number }}</span>
+        <div>
+          <p class="eyebrow">State {{ section.number }}</p>
+          <h2>{{ section.title }}</h2>
+        </div>
+      </header>
+
+      <div class="cv-trajectory__content">
+        {% case section.type %}
+          {% when 'profile' %}
+            <p class="cv-profile">{{ section.profile }}</p>
+
+          {% when 'experience' %}
+            <div class="cv-records cv-records--experience">
+              {% for entry in section.entries %}
+                <article class="cv-record">
+                  <div class="cv-record__meta">
+                    <time>{{ entry.date }}</time>
+                    <span>{{ entry.location }}</span>
+                  </div>
+                  <div class="cv-record__body">
+                    <p class="cv-record__organization">{{ entry.organization }}</p>
+                    <h3>{{ entry.role }}</h3>
+                    <p>{{ entry.description }}</p>
+                  </div>
+                </article>
+              {% endfor %}
+            </div>
+
+          {% when 'education' %}
+            <div class="cv-records cv-records--education">
+              {% for entry in section.entries %}
+                <article class="cv-record">
+                  <div class="cv-record__meta">
+                    <time>{{ entry.date }}</time>
+                  </div>
+                  <div class="cv-record__body">
+                    <p class="cv-record__organization">{{ entry.institution }}</p>
+                    <h3>{{ entry.degree }}</h3>
+                  </div>
+                </article>
+              {% endfor %}
+            </div>
+
+          {% when 'selected' %}
+            <div class="cv-outputs">
+              <article class="cv-output cv-output--patent">
+                <p class="eyebrow">{{ section.patent.label }}</p>
+                <h3>{{ section.patent.title }}</h3>
+                <dl>
+                  <div>
+                    <dt>{{ section.patent.role_label }}</dt>
+                    <dd>{{ section.patent.role }}</dd>
+                  </div>
+                  <div>
+                    <dt>{{ section.patent.application_label }}</dt>
+                    <dd>{{ section.patent.application }}</dd>
+                  </div>
+                </dl>
+              </article>
+
+              <article class="cv-output cv-output--honors">
+                <p class="eyebrow">{{ section.honors.label }}</p>
+                <ul>
+                  {% for honor in section.honors.entries %}
+                    <li>{{ honor }}</li>
+                  {% endfor %}
+                </ul>
+              </article>
+
+              <article class="cv-output cv-output--publications">
+                <p class="eyebrow">{{ section.publications.label }}</p>
+                <p>{{ section.publications.summary }}</p>
+                <a class="cv-action" href="{{ section.publications.link | relative_url }}">
+                  {{ section.publications.link_label }} <span aria-hidden="true">→</span>
+                </a>
+              </article>
+
+              <article class="cv-output cv-output--contact">
+                <p class="eyebrow">{{ section.contact.label }}</p>
+                <a class="cv-action" href="{{ section.contact.link | relative_url }}">
+                  {{ section.contact.link_label }} <span aria-hidden="true">→</span>
+                </a>
+              </article>
+            </div>
+        {% endcase %}
+      </div>
+    </section>
+  {% endfor %}
+</div>

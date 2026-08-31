@@ -162,6 +162,11 @@
     gap: 3.25rem;
   }
 
+  .cv-record {
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
   .contact-panel {
     min-height: 0;
     grid-template-columns: minmax(0, 1fr) minmax(10rem, 0.36fr);
@@ -331,36 +336,104 @@
     border-bottom: 0;
   }
 
-  .cv-framework {
+  .cv-page .page-heading {
+    margin-bottom: 4rem;
+  }
+
+  .cv-trajectory {
+    --cv-axis-x: 0.55rem;
+  }
+
+  .cv-trajectory__section {
+    padding-bottom: 4.5rem;
+  }
+
+  .cv-trajectory__section::before {
+    top: 3.15rem;
+  }
+
+  .cv-trajectory__heading {
+    grid-template-columns: 3.4rem minmax(0, 1fr);
+  }
+
+  .cv-trajectory__number {
+    padding: 1.35rem 0 0 1.25rem;
+    font-size: 0.62rem;
+  }
+
+  .cv-trajectory__heading h2 {
+    font-size: clamp(2.35rem, 13vw, 3.6rem);
+  }
+
+  .cv-trajectory__content {
+    margin-left: 3.4rem;
+    padding-top: 2rem;
+  }
+
+  .cv-profile {
+    font-size: 1.35rem;
+    line-height: 1.48;
+  }
+
+  .cv-records,
+  .cv-outputs {
+    padding-left: 1.35rem;
+  }
+
+  .cv-record {
+    display: block;
+    padding-bottom: 3.25rem;
+  }
+
+  .cv-record::before,
+  .cv-output::before {
+    left: -1.62rem;
+  }
+
+  .cv-record__meta {
+    margin-bottom: 0.75rem;
+  }
+
+  .cv-record__meta span {
+    margin-top: 0.15rem;
+  }
+
+  .cv-record__organization {
+    font-size: 0.61rem;
+  }
+
+  .cv-record__body h3 {
+    font-size: clamp(1.4rem, 7.5vw, 1.8rem);
+  }
+
+  .cv-record__body > p:last-child {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .cv-output--patent h3 {
+    font-size: clamp(1.65rem, 8.5vw, 2.25rem);
+  }
+
+  .cv-output dl {
     grid-template-columns: 1fr;
-    padding-left: 1rem;
+    background: transparent;
   }
 
-  .cv-framework::before {
-    top: 1.75rem;
-    bottom: 1.75rem;
-    left: 2.05rem;
-    width: 1px;
-    height: auto;
-    background: linear-gradient(180deg, var(--cyan), var(--violet), var(--green), var(--gold));
+  .cv-output dl > div {
+    border-top: 1px solid var(--line);
   }
 
-  .cv-framework > div {
-    min-height: 6rem;
-    padding: 1.15rem 1rem 1rem 3.2rem;
+  .cv-output dl > div + div {
+    padding-left: 0;
   }
 
-  .cv-framework > div::before {
-    top: 1.5rem;
-    left: 0.72rem;
-  }
-
-  .cv-framework p {
-    margin-top: 0.55rem;
-  }
-
-  .cv-sections > section {
+  .cv-output--honors ul {
     grid-template-columns: 1fr;
+  }
+
+  .cv-action {
+    min-height: 3rem;
   }
 
   .publication-spectrum {
