@@ -85,6 +85,19 @@
 .sphere-static__orbit--a { color: rgba(168, 151, 255, 0.28); }
 .sphere-static__orbit--b { color: rgba(116, 230, 178, 0.25); }
 
+.sphere-static__network {
+  color: rgba(168, 151, 255, 0.2);
+}
+
+.sphere-static__network path {
+  stroke-dasharray: 3 8;
+}
+
+.sphere-static__network circle {
+  fill: rgba(113, 225, 255, 0.5);
+  stroke: rgba(113, 225, 255, 0.7);
+}
+
 .sphere-labels {
   z-index: 5;
   pointer-events: none;
@@ -102,11 +115,11 @@
   padding: 0.45rem 0.65rem 0.45rem 0.5rem;
   border: 1px solid rgba(151, 205, 231, 0.12);
   border-radius: 999px;
-  color: var(--text-soft);
-  background: rgba(5, 8, 17, 0.68);
+  color: #b6c9d3;
+  background: rgba(5, 8, 17, 0.76);
   box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   font-family: var(--mono);
-  font-size: clamp(0.58rem, 0.66vw, 0.7rem);
+  font-size: clamp(0.64rem, 0.7vw, 0.75rem);
   line-height: 1;
   text-decoration: none;
   white-space: nowrap;
@@ -142,7 +155,7 @@
 }
 
 .sphere-node.is-distant:not(:hover):not(:focus-visible):not(.is-selected) {
-  opacity: 0.58;
+  opacity: 0.68;
 }
 
 .research-sphere.is-loading .sphere-labels {
@@ -188,24 +201,43 @@
 
 .research-sphere.is-fallback .sphere-stage,
 .no-js .sphere-stage {
-  min-height: 44rem;
+  min-height: 42rem;
   cursor: default;
 }
 
 .research-sphere.is-fallback .sphere-labels,
 .no-js .sphere-labels {
   position: absolute;
-  inset: auto 3% 8rem;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.45rem;
+  inset: 0;
+  display: block;
 }
 
 .research-sphere.is-fallback .sphere-node,
 .no-js .sphere-node {
-  position: static;
+  position: absolute;
+  top: var(--fallback-y);
+  left: var(--fallback-x);
   min-width: 0;
-  transform: none;
+  min-height: 2rem;
+  padding: 0.35rem 0.5rem;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(90deg, rgba(5, 8, 17, 0.9), rgba(5, 8, 17, 0.18));
+  box-shadow: none;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.research-sphere.is-fallback .sphere-node::after,
+.no-js .sphere-node::after {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.1rem;
+  left: 0.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--node-color), transparent);
+  content: "";
+  opacity: 0.28;
 }
 
 @media (max-width: 860px) {
@@ -213,9 +245,7 @@
     min-height: auto;
   }
 
-  .sphere-stage,
-  .research-sphere.is-fallback .sphere-stage,
-  .no-js .sphere-stage {
+  .sphere-stage {
     display: grid;
     min-height: 0;
     aspect-ratio: auto;
@@ -229,9 +259,7 @@
     height: min(88vw, 28rem);
   }
 
-  .sphere-labels,
-  .research-sphere.is-fallback .sphere-labels,
-  .no-js .sphere-labels {
+  .sphere-labels {
     position: relative;
     inset: auto;
     display: grid;
@@ -240,15 +268,46 @@
     padding: 1rem 0 0;
   }
 
-  .sphere-node,
-  .research-sphere.is-fallback .sphere-node,
-  .no-js .sphere-node {
+  .sphere-node {
     position: static;
     width: 100%;
     min-width: 0;
     min-height: 2.8rem;
     white-space: normal;
     transform: none;
+  }
+
+  .research-sphere.is-fallback .sphere-stage,
+  .no-js .sphere-stage {
+    display: block;
+    height: min(92vw, 32rem);
+    min-height: 0;
+    padding-top: 0;
+  }
+
+  .research-sphere.is-fallback .sphere-static,
+  .no-js .sphere-static {
+    height: 100%;
+  }
+
+  .research-sphere.is-fallback .sphere-labels,
+  .no-js .sphere-labels {
+    position: absolute;
+    inset: 0;
+    display: block;
+    padding: 0;
+  }
+
+  .research-sphere.is-fallback .sphere-node,
+  .no-js .sphere-node {
+    position: absolute;
+    top: var(--fallback-y);
+    left: var(--fallback-x);
+    width: auto;
+    max-width: 8.5rem;
+    min-height: 1.9rem;
+    font-size: 0.55rem;
+    transform: translate(-50%, -50%);
   }
 
   .sphere-copy {

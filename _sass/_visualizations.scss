@@ -57,12 +57,51 @@
   font-size: 10px;
 }
 
+.motif__probability-mass {
+  fill: rgba(113, 225, 255, 0.035);
+  stroke: rgba(113, 225, 255, 0.24);
+  stroke-width: 1;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.is-visible .motif__probability-mass {
+  animation: probability-redistribution 12s var(--ease) infinite;
+  animation-delay: calc(var(--i) * -1.7s);
+}
+
 .motif__current,
 .motif__orbit,
 .motif__mode {
   fill: none;
   stroke: var(--cyan);
   stroke-linecap: round;
+}
+
+.motif__dimension-current {
+  stroke: var(--violet);
+  stroke-width: 1.8;
+  stroke-dasharray: 1 18;
+  opacity: 0.55;
+}
+
+.is-visible .motif__dimension-current {
+  animation: dimension-transfer 9s linear infinite;
+  animation-delay: calc(var(--i) * -0.82s);
+}
+
+.motif__configuration-projection {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.motif__configuration-node--odd {
+  fill: var(--violet);
+}
+
+.motif__occupation-label {
+  fill: rgba(217, 231, 239, 0.34);
+  font-size: 7px;
 }
 
 .motif__trajectory,
@@ -80,6 +119,50 @@
 .motif__trajectory {
   stroke: rgba(168, 151, 255, 0.25);
   stroke-width: 1;
+}
+
+.motif__system-boundary,
+.motif__system-state,
+.motif__environment-boundary,
+.motif__decoherence-channel,
+.motif__decoherence-flow {
+  fill: none;
+}
+
+.motif__system-boundary {
+  stroke: rgba(113, 225, 255, 0.28);
+  stroke-width: 1.2;
+}
+
+.motif__system-state {
+  stroke: rgba(168, 151, 255, 0.44);
+  stroke-dasharray: 3 7;
+}
+
+.motif__environment-boundary {
+  stroke: rgba(116, 230, 178, 0.24);
+  stroke-dasharray: 4 10;
+}
+
+.motif__environment-node {
+  fill: var(--green);
+  opacity: 0.55;
+}
+
+.motif__decoherence-channel {
+  stroke: rgba(116, 230, 178, 0.2);
+}
+
+.motif__decoherence-flow {
+  stroke: var(--green);
+  stroke-width: 1.6;
+  stroke-dasharray: 1 19;
+  opacity: 0.55;
+}
+
+.is-visible .motif__decoherence-flow {
+  animation: decoherence-flow 8.5s linear infinite;
+  animation-delay: calc(var(--i) * -1.4s);
 }
 
 .motif__decay {
@@ -154,6 +237,29 @@
 .motif__node-shell--violet { stroke: rgba(168, 151, 255, 0.5); }
 .motif__node-core--violet { fill: var(--violet); }
 
+.motif__occupation-state {
+  fill: var(--violet);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.motif__occupation-event {
+  fill: none;
+  stroke: rgba(168, 151, 255, 0.38);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.is-visible .motif__occupation-state {
+  animation: occupation-switch 10.5s steps(1, end) infinite;
+  animation-delay: calc(var(--i) * -1.18s);
+}
+
+.is-visible .motif__occupation-event {
+  animation: occupation-event 10.5s ease-out infinite;
+  animation-delay: calc(var(--i) * -1.18s);
+}
+
 .motif__matrix-entry {
   fill: rgba(113, 225, 255, 0.68);
 }
@@ -172,6 +278,8 @@
 .motif__gate {
   fill: rgba(168, 151, 255, 0.12);
   stroke: rgba(168, 151, 255, 0.72);
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
 .motif__control {
@@ -186,6 +294,24 @@
   fill: var(--ink-900);
   stroke: var(--cyan);
   stroke-width: 1.5;
+}
+
+.motif__state-transfer {
+  fill: none;
+  stroke: var(--cyan);
+  stroke-width: 1.7;
+  stroke-dasharray: 2 18;
+  opacity: 0.62;
+}
+
+.is-visible .motif__gate {
+  animation: circuit-stage 12s var(--ease) infinite;
+  animation-delay: calc(var(--i) * -1.5s);
+}
+
+.is-visible .motif__state-transfer {
+  animation: state-transfer 6.8s linear infinite;
+  animation-delay: calc(var(--i) * -1.25s);
 }
 
 .is-visible .motif__algorithm-node,
@@ -233,13 +359,32 @@
   opacity: 0.34;
 }
 
+.motif__tensor-lattice,
+.motif__operator-stage,
+.motif__spectrum {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.is-visible .motif__tensor-lattice {
+  animation: tensor-contract 14s var(--ease) infinite;
+}
+
+.is-visible .motif__operator-stage {
+  animation: operator-transfer 14s var(--ease) infinite;
+}
+
+.is-visible .motif__spectrum {
+  animation: spectrum-resolve 14s var(--ease) infinite;
+}
+
 .is-visible .motif__mode {
   animation: spectral-mode 8s ease-in-out infinite alternate;
   animation-delay: calc(var(--i) * -1.2s);
 }
 
-.is-visible .motif--hypercube .motif__structure {
-  animation: configuration-drift 18s ease-in-out infinite alternate;
+.is-visible .motif--hypercube .motif__configuration-projection {
+  animation: configuration-project 18s ease-in-out infinite alternate;
 }
 
 @keyframes current-flow {
@@ -251,13 +396,64 @@
   100% { stroke-dashoffset: -55; opacity: 0.72; }
 }
 
-@keyframes configuration-drift {
-  from { transform: rotate(-1.3deg) scale(0.985); }
-  to { transform: rotate(1.3deg) scale(1.015); }
+@keyframes probability-redistribution {
+  0%, 100% { opacity: 0.24; transform: scale(0.72); }
+  38% { opacity: 0.72; transform: scale(1.15); }
+  68% { opacity: 0.38; transform: scale(0.9); }
+}
+
+@keyframes dimension-transfer {
+  to { stroke-dashoffset: -76; }
+}
+
+@keyframes configuration-project {
+  from { transform: rotate(-1.1deg) skewX(-0.8deg) scale(0.985); }
+  to { transform: rotate(1.1deg) skewX(1.4deg) scale(1.018); }
+}
+
+@keyframes tensor-contract {
+  0%, 24% { opacity: 0.95; transform: translateX(0) scale(1); }
+  46%, 66% { opacity: 0.56; transform: translateX(10px) scale(0.92); }
+  86%, 100% { opacity: 0.95; transform: translateX(0) scale(1); }
+}
+
+@keyframes operator-transfer {
+  0%, 20%, 82%, 100% { opacity: 0.58; transform: scale(0.92); }
+  42%, 62% { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes spectrum-resolve {
+  0%, 34% { opacity: 0.5; transform: translateX(-8px); }
+  62%, 84% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0.5; transform: translateX(-8px); }
 }
 
 @keyframes charge-flow {
   to { stroke-dashoffset: -92; }
+}
+
+@keyframes decoherence-flow {
+  to { stroke-dashoffset: -84; }
+}
+
+@keyframes occupation-switch {
+  0%, 22%, 72%, 100% { opacity: 0.22; transform: scale(0.55); }
+  24%, 70% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes occupation-event {
+  0%, 20% { opacity: 0; transform: scale(0.45); }
+  22% { opacity: 0.8; transform: scale(0.55); }
+  48%, 100% { opacity: 0; transform: scale(1.4); }
+}
+
+@keyframes circuit-stage {
+  0%, 20%, 72%, 100% { opacity: 0.48; transform: scale(0.92); }
+  32%, 58% { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes state-transfer {
+  to { stroke-dashoffset: -88; }
 }
 
 @keyframes node-breathe {
@@ -268,5 +464,23 @@
 @media (prefers-reduced-motion: reduce) {
   .motif__current {
     opacity: 0.55;
+  }
+
+  .motif__probability-mass,
+  .motif__configuration-projection,
+  .motif__tensor-lattice,
+  .motif__operator-stage,
+  .motif__spectrum {
+    opacity: 1;
+    transform: none;
+  }
+
+  .motif__occupation-state,
+  .motif__occupation-event,
+  .motif__gate,
+  .motif__state-transfer,
+  .motif__decoherence-flow {
+    opacity: 0.65;
+    transform: none;
   }
 }

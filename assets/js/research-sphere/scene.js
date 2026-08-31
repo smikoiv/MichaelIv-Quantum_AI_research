@@ -28,29 +28,23 @@ export function createSphereScene(container, model) {
   const root = new THREE.Group();
   scene.add(root);
 
-  const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x71e1ff, wireframe: true, transparent: true, opacity: 0.105 });
-  root.add(new THREE.Mesh(new THREE.SphereGeometry(2.05, 24, 16), sphereMaterial));
+  const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x71e1ff, wireframe: true, transparent: true, opacity: 0.034 });
+  root.add(new THREE.Mesh(new THREE.SphereGeometry(2.05, 14, 9), sphereMaterial));
 
-  const coordinateMaterial = new THREE.LineBasicMaterial({ color: 0x9edff0, transparent: true, opacity: 0.13 });
-  [
-    [0, 0, 0],
-    [Math.PI / 2, 0, 0],
-    [0, 0, Math.PI / 2],
-  ].forEach(([x, y, z]) => {
+  const coordinateMaterial = new THREE.LineBasicMaterial({ color: 0x9edff0, transparent: true, opacity: 0.115 });
+  Array.from({ length: 6 }, (_, index) => index * (Math.PI / 6)).forEach((z) => {
     const circle = lineFromPoints(circlePoints(2.06), coordinateMaterial.clone());
-    circle.rotation.set(x, y, z);
+    circle.rotation.z = z;
     root.add(circle);
   });
-  [0.52, 1.12].forEach((y) => {
-    const radius = Math.sqrt((2.05 ** 2) - (y ** 2));
-    [-y, y].forEach((offset) => {
-      const latitude = lineFromPoints(circlePoints(radius), coordinateMaterial.clone());
-      latitude.position.y = offset;
-      root.add(latitude);
-    });
+  [-1.35, -0.72, 0, 0.72, 1.35].forEach((offset) => {
+    const radius = Math.sqrt((2.05 ** 2) - (offset ** 2));
+    const latitude = lineFromPoints(circlePoints(radius), coordinateMaterial.clone());
+    latitude.position.y = offset;
+    root.add(latitude);
   });
 
-  const axisMaterial = new THREE.LineBasicMaterial({ color: 0xc9e5ee, transparent: true, opacity: 0.11 });
+  const axisMaterial = new THREE.LineBasicMaterial({ color: 0xc9e5ee, transparent: true, opacity: 0.09 });
   [
     [new THREE.Vector3(-2.65, 0, 0), new THREE.Vector3(2.65, 0, 0)],
     [new THREE.Vector3(0, -2.65, 0), new THREE.Vector3(0, 2.65, 0)],
@@ -58,18 +52,23 @@ export function createSphereScene(container, model) {
   ].forEach((points) => root.add(lineFromPoints(points, axisMaterial.clone())));
 
   const groupColors = [model.palette.theory, model.palette.research, model.palette.applications];
+  const orbitalProfiles = [
+    { rotation: [0.34, -0.48, 0.22], radius: 2.59, yScale: 0.84 },
+    { rotation: [1.08, 0.18, -0.42], radius: 2.62, yScale: 0.82 },
+    { rotation: [-0.56, 0.72, 0.38], radius: 2.57, yScale: 0.86 },
+  ];
   const trajectories = groupColors.map((color, index) => {
+    const profile = orbitalProfiles[index];
     const pivot = new THREE.Group();
-    pivot.rotation.set(0.34 + index * 0.52, -0.48 + index * 0.61, 0.22 - index * 0.31);
-    const radius = 2.48 + index * 0.17;
-    const material = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.2 });
-    const path = lineFromPoints(circlePoints(radius, 160, 0.78 + index * 0.08), material);
+    pivot.rotation.set(...profile.rotation);
+    const material = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.27 });
+    const path = lineFromPoints(circlePoints(profile.radius, 160, profile.yScale), material);
     pivot.add(path);
     root.add(pivot);
-    return { pivot, path, material, radius, yScale: 0.78 + index * 0.08, particles: [] };
+    return { pivot, path, material, radius: profile.radius, yScale: profile.yScale, particles: [] };
   });
 
-  const nodeGeometry = new THREE.SphereGeometry(0.055, 12, 10);
+  const nodeGeometry = new THREE.SphereGeometry(0.052, 12, 10);
   const nodeMeshes = model.items.map((item) => {
     const material = new THREE.MeshBasicMaterial({ color: item.color, transparent: true, opacity: 0.82 });
     const mesh = new THREE.Mesh(nodeGeometry, material);
@@ -86,7 +85,7 @@ export function createSphereScene(container, model) {
       if (index > 0) points.push(members[index - 1].position.clone(), mesh.position.clone());
     });
     if (members.length > 2) points.push(members[0].position.clone(), members[members.length - 1].position.clone());
-    const graphMaterial = new THREE.LineBasicMaterial({ color: groupColors[groupIndex], transparent: true, opacity: 0.13 });
+    const graphMaterial = new THREE.LineBasicMaterial({ color: groupColors[groupIndex], transparent: true, opacity: 0.105 });
     const graph = new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(points), graphMaterial);
     root.add(graph);
 
@@ -101,7 +100,7 @@ export function createSphereScene(container, model) {
     }
   });
 
-  [1, 6, 11].forEach((itemIndex, vectorIndex) => {
+  [0, 4, 9].forEach((itemIndex, vectorIndex) => {
     const item = model.items[itemIndex];
     const direction = new THREE.Vector3(item.position.x, item.position.y, item.position.z).normalize();
     const arrow = new THREE.ArrowHelper(direction, new THREE.Vector3(), 1.45 + vectorIndex * 0.16, item.color, 0.08, 0.045);

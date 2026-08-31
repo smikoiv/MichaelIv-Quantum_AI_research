@@ -27,7 +27,7 @@ export function readSphereData(root) {
         },
       };
     }),
-  );
+  ).sort((a, b) => a.sphere_order - b.sphere_order);
 
   return { groups: parsed.groups, items, palette };
 }

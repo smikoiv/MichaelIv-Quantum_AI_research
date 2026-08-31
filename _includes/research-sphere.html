@@ -21,20 +21,26 @@
       <path d="M78 320H562M320 78V562"></path>
       <ellipse class="sphere-static__orbit sphere-static__orbit--a" cx="320" cy="320" rx="260" ry="104" transform="rotate(-24 320 320)"></ellipse>
       <ellipse class="sphere-static__orbit sphere-static__orbit--b" cx="320" cy="320" rx="270" ry="124" transform="rotate(42 320 320)"></ellipse>
+      <g class="sphere-static__network">
+        <path d="M190 242 260 196 328 244 394 190 452 252 386 326 292 318 224 382 170 326Z"></path>
+        <path d="M260 196 292 318M328 244 224 382M394 190 386 326M190 242 452 252"></path>
+        <circle cx="190" cy="242" r="4"></circle>
+        <circle cx="260" cy="196" r="4"></circle>
+        <circle cx="328" cy="244" r="4"></circle>
+        <circle cx="394" cy="190" r="4"></circle>
+        <circle cx="452" cy="252" r="4"></circle>
+        <circle cx="386" cy="326" r="4"></circle>
+        <circle cx="292" cy="318" r="4"></circle>
+        <circle cx="224" cy="382" r="4"></circle>
+        <circle cx="170" cy="326" r="4"></circle>
+      </g>
     </svg>
     <div class="sphere-labels" aria-describedby="sphere-description" data-sphere-labels>
-      {% assign sphere_index = 0 %}
-      {% for item in site.data.theory %}
-        <a href="{{ item.link | relative_url }}" class="sphere-node sphere-node--theory" data-sphere-node data-group="theory" data-index="{{ sphere_index }}" data-x="{{ item.sphere_coordinates.x }}" data-y="{{ item.sphere_coordinates.y }}" data-z="{{ item.sphere_coordinates.z }}" data-description="{{ item.description | escape }}"><span>{{ item.short_label }}</span></a>
-        {% assign sphere_index = sphere_index | plus: 1 %}
-      {% endfor %}
-      {% for item in site.data.research %}
-        <a href="{{ item.link | relative_url }}" class="sphere-node sphere-node--research" data-sphere-node data-group="research" data-index="{{ sphere_index }}" data-x="{{ item.sphere_coordinates.x }}" data-y="{{ item.sphere_coordinates.y }}" data-z="{{ item.sphere_coordinates.z }}" data-description="{{ item.description | escape }}"><span>{{ item.short_label }}</span></a>
-        {% assign sphere_index = sphere_index | plus: 1 %}
-      {% endfor %}
-      {% for item in site.data.applications %}
-        <a href="{{ item.link | relative_url }}" class="sphere-node sphere-node--applications" data-sphere-node data-group="applications" data-index="{{ sphere_index }}" data-x="{{ item.sphere_coordinates.x }}" data-y="{{ item.sphere_coordinates.y }}" data-z="{{ item.sphere_coordinates.z }}" data-description="{{ item.description | escape }}"><span>{{ item.short_label }}</span></a>
-        {% assign sphere_index = sphere_index | plus: 1 %}
+      {% assign sphere_items = site.data.theory | concat: site.data.research | concat: site.data.applications | sort: 'sphere_order' %}
+      {% for item in sphere_items %}
+        {% assign fallback_x = item.sphere_coordinates.x | times: 30 | plus: 50 %}
+        {% assign fallback_y = item.sphere_coordinates.y | times: -30 | plus: 50 %}
+        <a href="{{ item.link | relative_url }}" class="sphere-node sphere-node--{{ item.sphere_group }}" data-sphere-node data-group="{{ item.sphere_group }}" data-index="{{ forloop.index0 }}" data-x="{{ item.sphere_coordinates.x }}" data-y="{{ item.sphere_coordinates.y }}" data-z="{{ item.sphere_coordinates.z }}" data-description="{{ item.description | escape }}" style="--fallback-x: {{ fallback_x }}%; --fallback-y: {{ fallback_y }}%;"><span>{{ item.short_label }}</span></a>
       {% endfor %}
     </div>
   </div>

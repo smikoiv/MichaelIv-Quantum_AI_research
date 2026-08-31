@@ -20,6 +20,7 @@ visualizations: true
 <section class="home-section home-section--theory" id="theory-home" aria-labelledby="theory-title">
   {% include section-heading.html index="01 / Structure" id="theory-title" title="Theory" note="Three equal mathematical directions." link="/theory/" %}
   <div class="theory-grid">
+    {% include theory-continuum.html %}
     {% for item in site.data.theory %}
       {% include direction-visual.html item=item index=forloop.index scale="large" %}
     {% endfor %}

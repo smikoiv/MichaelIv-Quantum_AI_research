@@ -7,6 +7,7 @@ wide: true
 visualizations: true
 ---
 <div class="route-grid route-grid--three">
+  {% include theory-continuum.html %}
   {% for item in site.data.theory %}
     {% include direction-visual.html item=item index=forloop.index scale="route" %}
   {% endfor %}

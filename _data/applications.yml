@@ -1,60 +1,72 @@
 - title: Environment
+  sphere_group: applications
+  sphere_order: 3
   short_label: Environment
   description: Spatial fields and environmental networks.
   icon: flow-field
   visual_type: environment
   sphere_coordinates:
-    x: -0.78
-    y: -0.56
+    x: -0.30
+    y: 0.91
     z: 0.28
   link: /applications/#environment
 - title: Transport
+  sphere_group: applications
+  sphere_order: 6
   short_label: Transport
   description: Paths moving through connected systems.
   icon: transport-path
   visual_type: transport
   sphere_coordinates:
-    x: -0.38
-    y: -0.82
-    z: -0.44
+    x: 0.48
+    y: 0.68
+    z: 0.55
   link: /applications/#transport
 - title: Energy
+  sphere_group: applications
+  sphere_order: 8
   short_label: Energy
   description: Dynamic flow across coupled grids.
   icon: energy-grid
   visual_type: energy
   sphere_coordinates:
-    x: 0.06
-    y: -0.95
-    z: 0.3
+    x: -0.92
+    y: -0.22
+    z: 0.32
   link: /applications/#energy
 - title: Biology & Health
+  sphere_group: applications
+  sphere_order: 10
   short_label: Biology + Health
   description: Branching structure and state transitions.
   icon: branching
   visual_type: biology
   sphere_coordinates:
-    x: 0.46
-    y: -0.78
-    z: -0.42
+    x: 0.26
+    y: 0.20
+    z: -0.94
   link: /applications/#biology-health
 - title: Economics & Finance
+  sphere_group: applications
+  sphere_order: 12
   short_label: Economics + Finance
   description: Stochastic flow through dynamic networks.
   icon: economic-network
   visual_type: economics
   sphere_coordinates:
-    x: 0.75
-    y: -0.56
-    z: 0.36
+    x: -0.18
+    y: -0.91
+    z: -0.37
   link: /applications/#economics-finance
 - title: Infrastructure
+  sphere_group: applications
+  sphere_order: 14
   short_label: Infrastructure
   description: Capacity-constrained interconnected networks.
   icon: infrastructure
   visual_type: infrastructure
   sphere_coordinates:
-    x: 0.92
-    y: -0.32
-    z: -0.24
+    x: 0.67
+    y: -0.16
+    z: -0.73
   link: /applications/#infrastructure

@@ -13,12 +13,47 @@
       <path d="M96 376C270 84 488 78 614 300s314 235 492-64"></path>
       <path d="M98 225c160 215 322 220 500 52s330-154 504 54"></path>
     </g>
-    <circle class="application-field__core" cx="600" cy="300" r="58"></circle>
+    <g class="application-field__radials application-field__radials--desktop">
+      <path d="M600 300Q404 240 150 150"></path>
+      <path d="M600 300Q376 380 190 456"></path>
+      <path d="M600 300Q548 188 500 72"></path>
+      <path d="M600 300Q680 174 800 78"></path>
+      <path d="M600 300Q820 224 1056 174"></path>
+      <path d="M600 300Q820 390 1010 458"></path>
+    </g>
+    <circle class="application-field__core-orbit application-field__core-orbit--outer" cx="600" cy="300" r="112"></circle>
+    <circle class="application-field__core-orbit" cx="600" cy="300" r="88"></circle>
+    <circle class="application-field__core" cx="600" cy="300" r="72"></circle>
+  </svg>
+  <svg class="application-field__map application-field__map--mobile" viewBox="0 0 360 440" role="presentation" aria-hidden="true">
+    <defs>
+      <linearGradient id="application-flow-mobile" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#71e1ff"></stop>
+        <stop offset=".5" stop-color="#74e6b2"></stop>
+        <stop offset="1" stop-color="#e7c878"></stop>
+      </linearGradient>
+    </defs>
+    <g class="application-field__orbits application-field__orbits--mobile">
+      <ellipse cx="180" cy="220" rx="151" ry="188"></ellipse>
+      <ellipse cx="180" cy="220" rx="130" ry="193" transform="rotate(16 180 220)"></ellipse>
+      <path d="M30 298C86 118 132 82 180 220s96 138 150-78"></path>
+    </g>
+    <g class="application-field__radials application-field__radials--mobile">
+      <path d="M180 220Q126 136 72 70"></path>
+      <path d="M180 220Q234 134 288 70"></path>
+      <path d="M180 220H52"></path>
+      <path d="M180 220H308"></path>
+      <path d="M180 220Q124 306 75 370"></path>
+      <path d="M180 220Q236 306 285 370"></path>
+    </g>
+    <circle class="application-field__core-orbit application-field__core-orbit--outer" cx="180" cy="220" r="62"></circle>
+    <circle class="application-field__core-orbit" cx="180" cy="220" r="49"></circle>
+    <circle class="application-field__core" cx="180" cy="220" r="39"></circle>
   </svg>
   <p class="application-field__core-label">Shared mathematical structure</p>
   <div class="application-field__nodes">
     {% for item in site.data.applications %}
-      <a class="application-field__node application-field__node--{{ forloop.index }}" href="{{ item.link | relative_url }}" data-application-node data-application-index="{{ forloop.index0 }}">
+      <a class="application-field__node application-field__node--{{ forloop.index }}" id="{{ item.title | slugify }}" href="{{ item.link | relative_url }}" data-application-node data-application-index="{{ forloop.index0 }}">
         <span>{{ item.title }}</span>
         <small>{{ item.description }}</small>
       </a>

@@ -2,6 +2,9 @@ import { append, addArrowMarker, groups } from './shared.js';
 
 function renderDissipative(visual) {
   const { structure, flow } = groups(visual);
+  append(structure, 'ellipse', { cx: 92, cy: 160, rx: 42, ry: 70, class: 'motif__system-boundary' });
+  append(structure, 'ellipse', { cx: 92, cy: 160, rx: 24, ry: 42, class: 'motif__system-state' });
+  append(structure, 'path', { d: 'M346 54Q452 94 438 218T350 272', class: 'motif__environment-boundary' });
   const paths = [
     'M62 72C142 42 214 80 242 144S316 239 408 204',
     'M52 150C128 105 188 124 226 169S310 227 408 204',
@@ -14,6 +17,12 @@ function renderDissipative(visual) {
   });
   [46, 30, 16].forEach((radius, index) => append(structure, 'circle', { cx: 408, cy: 204, r: radius, class: 'motif__attractor-ring', style: `--i:${index}` }));
   append(structure, 'circle', { cx: 408, cy: 204, r: 4, class: 'motif__node-core' });
+  [[438, 92], [452, 148], [444, 246]].forEach(([cx, cy], index) => {
+    append(structure, 'circle', { cx, cy, r: 3.5, class: 'motif__environment-node' });
+    const d = `M408 204Q${424 + index * 8} ${150 + index * 28} ${cx} ${cy}`;
+    append(structure, 'path', { d, class: 'motif__decoherence-channel' });
+    append(flow, 'path', { d, class: 'motif__decoherence-flow', style: `--i:${index}` });
+  });
 }
 
 function renderMolecular(visual) {
@@ -46,7 +55,8 @@ function renderStochastic(visual) {
   });
   points.forEach(([cx, cy], index) => {
     append(structure, 'circle', { cx, cy, r: 12, class: 'motif__node-shell motif__node-shell--violet' });
-    append(structure, 'circle', { cx, cy, r: 3, class: 'motif__node-core motif__node-core--violet', style: `--i:${index}` });
+    append(structure, 'rect', { x: cx - 4, y: cy - 4, width: 8, height: 8, rx: 1.5, class: 'motif__occupation-state', style: `--i:${index}` });
+    append(structure, 'circle', { cx, cy, r: 17, class: 'motif__occupation-event', style: `--i:${index}` });
   });
 }
 
@@ -86,7 +96,11 @@ function renderCircuit(visual) {
   const nodes = [[338, 104], [390, 82], [428, 146], [356, 206], [420, 232]];
   [[0, 1], [0, 2], [0, 3], [2, 4], [3, 4]].forEach(([a, b]) => append(structure, 'line', { x1: nodes[a][0], y1: nodes[a][1], x2: nodes[b][0], y2: nodes[b][1], class: 'motif__network-edge' }));
   nodes.forEach(([cx, cy], index) => append(flow, 'circle', { cx, cy, r: 5, class: 'motif__algorithm-node', style: `--i:${index}` }));
-  append(flow, 'path', { d: 'M290 160C320 160 322 128 338 104', class: 'motif__charge-flow' });
+  [
+    'M290 92C320 92 322 98 338 104',
+    'M290 160C330 160 340 152 368 144',
+    'M290 230C320 230 336 216 356 206',
+  ].forEach((d, index) => append(flow, 'path', { d, class: 'motif__state-transfer', style: `--i:${index}` }));
 }
 
 export function renderResearchVisual(visual, type) {
