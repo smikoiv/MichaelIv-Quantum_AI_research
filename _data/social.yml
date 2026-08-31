@@ -4,9 +4,6 @@ orcid:
 github:
   label: GitHub
   url: https://github.com/smikoiv
-email:
-  label: Email
-  url: mailto:smikoiv@gmail.com
 linkedin:
   label: LinkedIn
   url: ""

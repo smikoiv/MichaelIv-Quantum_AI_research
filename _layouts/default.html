@@ -17,5 +17,8 @@
     {% if page.visualizations %}
       <script type="module" src="{{ '/assets/js/visualizations.js' | relative_url }}"></script>
     {% endif %}
+    {% if page.contact_form %}
+      <script type="module" src="{{ '/assets/js/contact-form.js' | relative_url }}"></script>
+    {% endif %}
   </body>
 </html>
