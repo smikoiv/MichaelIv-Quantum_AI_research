@@ -6,8 +6,6 @@ url: "https://smikoiv.github.io"
 baseurl: "/MichaelIv-Quantum_AI_research"
 repository: smikoiv/MichaelIv-Quantum_AI_research
 
-theme: cvless
-
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
