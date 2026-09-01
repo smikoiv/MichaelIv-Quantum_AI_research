@@ -23,18 +23,27 @@ if (form) {
     if (submitLabel) submitLabel.textContent = "Sending…";
 
     try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" }
-      });
+      let response;
 
-      if (!response.ok) throw new Error("Contact request was not accepted");
+      try {
+        response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" }
+        });
+      } catch (_error) {
+        setState("error", "Unable to send message. Please try again.");
+        return;
+      }
 
-      form.reset();
-      setState("success", "Message sent successfully.");
-    } catch (_error) {
-      setState("error", "Unable to send message. Please try again.");
+      const requestSucceeded = response.status >= 200 && response.status < 300;
+
+      if (requestSucceeded) {
+        form.reset();
+        setState("success", "Message sent successfully.");
+      } else {
+        setState("error", "Unable to send message. Please try again.");
+      }
     } finally {
       form.removeAttribute("aria-busy");
       submit.disabled = false;
