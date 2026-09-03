@@ -50,6 +50,11 @@ visualizations: true
   {% include application-field.html %}
 </section>
 
+<section class="home-section home-section--trivia" id="mathematical-trivia" aria-labelledby="trivia-title">
+  {% include section-heading.html index="04 / Collaboration" id="trivia-title" title="Mathematical Trivia" note="One path through the scientific collaboration graph." %}
+  {% include erdos-path.html %}
+</section>
+
 <nav class="home-destinations" aria-label="Further information">
   <a href="{{ '/publications/' | relative_url }}"><span>Publications<small>4 peer-reviewed publications</small></span><i aria-hidden="true">↗</i></a>
   <a href="{{ '/cv/' | relative_url }}"><span>CV</span><i aria-hidden="true">↗</i></a>

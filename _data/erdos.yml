@@ -1,0 +1,51 @@
+statement:
+  lead: "My Erdős number is"
+  distance: 4
+definition: >-
+  An Erdős number is the shortest scientific-coauthorship distance from mathematician Paul Erdős.
+network_note: "Based on the currently documented coauthorship network."
+
+nodes:
+  - distance: 0
+    name: "Paul Erdős"
+    role: "Origin"
+  - distance: 1
+    name: "Peter Salamon"
+  - distance: 2
+    name: "Abraham Nitzan"
+  - distance: 3
+    name: "Uri Peskin"
+  - distance: 4
+    name: "Michael Iv"
+    role: "Current endpoint"
+
+publication_trail:
+  - edge: "0 → 1"
+    from: "Paul Erdős"
+    to: "Peter Salamon"
+    authors: "Paul Erdős and Peter Salamon"
+    title: "The Solution to a Problem of Grünbaum"
+    citation: "Canadian Mathematical Bulletin 31 (1988), 129–138."
+    doi: "https://doi.org/10.4153/CMB-1988-020-2"
+  - edge: "1 → 2"
+    from: "Peter Salamon"
+    to: "Abraham Nitzan"
+    authors: "Peter Salamon and Abraham Nitzan"
+    title: "Minimum Entropy Production and the Optimization of Heat Engines"
+    citation: "Physical Review A 21, 2115 (1980)."
+    doi: "https://doi.org/10.1103/PhysRevA.21.2115"
+  - edge: "2 → 3"
+    from: "Abraham Nitzan"
+    to: "Uri Peskin"
+    authors: "Michael Galperin, Abraham Nitzan and Uri Peskin"
+    title: "Traversal Times for Resonant Tunneling"
+    citation: "The Journal of Physical Chemistry B 106 (2002), 8306–8312."
+    doi: "https://doi.org/10.1021/jp0258412"
+  - edge: "3 → 4"
+    from: "Uri Peskin"
+    to: "Michael Iv"
+    authors: "Michael Iv and Uri Peskin"
+    title: "Ballistic transport and quantum unfurling in molecular junctions via minimal representations of quantum master equations"
+    citation: "The Journal of Chemical Physics 152, 184112 (2020)."
+    doi: "https://doi.org/10.1063/5.0005412"
+    pubmed: "https://pubmed.ncbi.nlm.nih.gov/32414262/"

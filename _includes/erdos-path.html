@@ -1,0 +1,50 @@
+{% assign erdos = site.data.erdos %}
+
+<div class="erdos-intro">
+  <p class="erdos-intro__statement">{{ erdos.statement.lead }} <strong>{{ erdos.statement.distance }}</strong>.</p>
+  <p class="erdos-intro__definition">{{ erdos.definition }} In graph-theoretic terms, it is a shortest-path distance in the scientific coauthorship network.</p>
+</div>
+
+<figure class="erdos-path" aria-labelledby="erdos-path-caption" aria-describedby="erdos-path-description">
+  <p class="visually-hidden" id="erdos-path-description">Five researchers form this path. Each consecutive pair coauthored a published scientific paper.</p>
+  <ol class="erdos-path__nodes" aria-label="Coauthorship path from Paul Erdős, number 0, to Michael Iv, number 4">
+    {% for node in erdos.nodes %}
+      <li class="erdos-path__node{% if forloop.first %} erdos-path__node--origin{% endif %}{% if forloop.last %} erdos-path__node--endpoint{% endif %}">
+        <span class="erdos-path__distance"><span class="visually-hidden">Erdős number </span>{{ node.distance }}</span>
+        <span class="erdos-path__name">{{ node.name }}</span>
+        {% if node.role %}<span class="erdos-path__role">{{ node.role }}</span>{% endif %}
+        {% unless forloop.last %}<span class="erdos-path__connector" aria-hidden="true"><i></i></span>{% endunless %}
+      </li>
+    {% endfor %}
+  </ol>
+  <figcaption id="erdos-path-caption">
+    <span>Shortest currently verified coauthorship path</span>
+    <small>{{ erdos.network_note }}</small>
+  </figcaption>
+</figure>
+
+<details class="erdos-evidence">
+  <summary>
+    <span>Verified publication trail</span>
+    <i aria-hidden="true"></i>
+  </summary>
+  <ol class="erdos-evidence__list">
+    {% for publication in erdos.publication_trail %}
+      <li class="erdos-evidence__item">
+        <div class="erdos-evidence__edge">
+          <span>{{ publication.edge }}</span>
+          <p>{{ publication.from }} <span aria-hidden="true">→</span><span class="visually-hidden"> to </span> {{ publication.to }}</p>
+        </div>
+        <div class="erdos-evidence__record">
+          <p class="erdos-evidence__authors">{{ publication.authors }}</p>
+          <p class="erdos-evidence__title"><cite>“{{ publication.title }}”</cite></p>
+          <p class="erdos-evidence__citation">{{ publication.citation }}</p>
+          <div class="erdos-evidence__links">
+            <a href="{{ publication.doi }}" rel="external" aria-label="Open DOI for {{ publication.title }}">DOI <span aria-hidden="true">↗</span></a>
+            {% if publication.pubmed %}<a href="{{ publication.pubmed }}" rel="external" aria-label="Open PubMed record for {{ publication.title }}">PubMed <span aria-hidden="true">↗</span></a>{% endif %}
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+  </ol>
+</details>
