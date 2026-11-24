@@ -1,6 +1,8 @@
 title: Michael "Miko" Iv
-tagline: Mathematical Structure in Complex Dynamical Systems
-description: Mathematical structure, state-space dynamics, and complex flow systems.
+tagline: Computational Scientist & Researcher
+description: >-
+  Michael Iv (Miko Iv), PhD, is a computational scientist in Denmark working on
+  mathematical modelling, open quantum systems, stochastic dynamics and scientific computing.
 lang: en
 url: "https://smikoiv.github.io"
 baseurl: "/MichaelIv-Quantum_AI_research"
@@ -18,6 +20,38 @@ defaults:
       path: ""
     values:
       layout: page
+  - scope:
+      path: "theory"
+    values:
+      description: "Mathematical foundations of complex dynamical systems: Markov generators, state-space geometry, spectral and tensor methods."
+  - scope:
+      path: "research"
+    values:
+      description: "Research by Michael Iv on open quantum systems, molecular transport, stochastic networks, scientific software and quantum algorithms."
+  - scope:
+      path: "applications"
+    values:
+      description: "Mathematical modelling of complex flow systems across environment, transport, energy, health, economics and infrastructure."
+  - scope:
+      path: "publications"
+    values:
+      description: "Peer-reviewed publications by Michael Iv in theoretical chemistry, molecular transport, open quantum systems and nonequilibrium dynamics."
+  - scope:
+      path: "cv"
+    values:
+      description: "Curriculum vitae of Michael (Miko) Iv, PhD: computational modelling, scientific computing, research experience, education and technical expertise."
+  - scope:
+      path: "contact"
+    values:
+      description: "Contact Michael Iv (Miko Iv) for research correspondence, scientific collaboration and computational modelling inquiries."
+  - scope:
+      path: "googlea5a0a2f2e07efe13.html"
+    values:
+      sitemap: false
+  - scope:
+      path: "404.html"
+    values:
+      sitemap: false
 
 exclude:
   - AGENTS.md
