@@ -23,26 +23,32 @@ defaults:
   - scope:
       path: "theory"
     values:
+      seo_title: "Mathematical Theory | Michael Iv (Miko Iv)"
       description: "Mathematical foundations of complex dynamical systems: Markov generators, state-space geometry, spectral and tensor methods."
   - scope:
       path: "research"
     values:
+      seo_title: "Quantum & Computational Research | Michael Iv (Miko Iv)"
       description: "Research by Michael Iv on open quantum systems, molecular transport, stochastic networks, scientific software and quantum algorithms."
   - scope:
       path: "applications"
     values:
+      seo_title: "Applied Mathematical Modelling | Michael Iv (Miko Iv)"
       description: "Mathematical modelling of complex flow systems across environment, transport, energy, health, economics and infrastructure."
   - scope:
       path: "publications"
     values:
+      seo_title: "Research Publications | Michael Iv (Miko Iv)"
       description: "Peer-reviewed publications by Michael Iv in theoretical chemistry, molecular transport, open quantum systems and nonequilibrium dynamics."
   - scope:
       path: "cv"
     values:
+      seo_title: "CV | Michael Iv (Miko Iv), PhD"
       description: "Curriculum vitae of Michael (Miko) Iv, PhD: computational modelling, scientific computing, research experience, education and technical expertise."
   - scope:
       path: "contact"
     values:
+      seo_title: "Research Contact | Michael Iv (Miko Iv)"
       description: "Contact Michael Iv (Miko Iv) for research correspondence, scientific collaboration and computational modelling inquiries."
   - scope:
       path: "googlea5a0a2f2e07efe13.html"
