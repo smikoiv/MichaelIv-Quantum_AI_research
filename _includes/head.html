@@ -2,7 +2,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#050811">
 <meta name="color-scheme" content="dark">
-{% seo %}
+{% if page.url == '/' %}
+  {% seo title=false %}
+  <title>Michael Iv (Miko Iv), PhD | Computational Scientist</title>
+  {% assign profile_url = '/' | absolute_url %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": {{ profile_url | append: '#profile' | jsonify }},
+    "url": {{ profile_url | jsonify }},
+    "mainEntity": {
+      "@type": "Person",
+      "@id": {{ profile_url | append: '#person' | jsonify }},
+      "name": "Michael Iv",
+      "alternateName": ["Miko Iv", "Michael (Miko) Iv"],
+      "url": {{ profile_url | jsonify }},
+      "image": {{ '/assets/images/michael-iv-portrait.jpg' | absolute_url | jsonify }},
+      "jobTitle": "Computational Scientist",
+      "description": {{ site.description | jsonify }},
+      "sameAs": [
+        {%- assign separator = '' -%}
+        {%- for entry in site.data.social -%}
+          {%- if entry[1].url and entry[1].url != empty -%}
+            {{ separator }}{{ entry[1].url | jsonify }}
+            {%- assign separator = ',' -%}
+          {%- endif -%}
+        {%- endfor -%}
+      ],
+      "knowsAbout": ["Mathematical modelling", "Open quantum systems", "Molecular transport", "Stochastic dynamics", "Scientific computing", "Quantum algorithms"]
+    }
+  }
+  </script>
+{% else %}
+  {% seo %}
+{% endif %}
 <link rel="icon" href="{{ '/assets/images/mark.svg' | relative_url }}" type="image/svg+xml">
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
