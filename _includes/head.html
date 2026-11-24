@@ -34,6 +34,9 @@
     }
   }
   </script>
+{% elsif page.seo_title %}
+  {% seo title=false %}
+  <title>{{ page.seo_title | escape }}</title>
 {% else %}
   {% seo %}
 {% endif %}
